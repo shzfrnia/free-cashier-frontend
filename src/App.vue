@@ -1,7 +1,9 @@
 <template>
   <div :style="{'background-color': selectedBgColor}"  id="app">
       <nav-bar></nav-bar>
+      <transition name="component-fade" mode="out-in">
       <router-view/>
+      </transition>
   </div>
 </template>
 
@@ -39,5 +41,13 @@
         text-align: center;
         height: 100vh;
         transition: 0.4s;
+    }
+
+
+    .component-fade-enter-active, .component-fade-leave-active {
+        transition: opacity .15s ease;
+    }
+    .component-fade-enter, .component-fade-leave-to {
+        opacity: 0;
     }
 </style>
