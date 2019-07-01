@@ -18,7 +18,7 @@
         routes: [
           {
             icon: 'user-circle',
-            route: '/',
+            route: '/tables',
             bkColor: '#3EAF6F'
           },
           {
@@ -28,6 +28,11 @@
           }
         ]
       }
+    },
+    computed: {
+      hotFixRoute() {
+        return this.$route.path !== '/'
+      }
     }
   }
 </script>
@@ -35,9 +40,6 @@
 <style scoped>
     .my-btn-container {
         display: flex;
-        /*background-color: black;*/
-        /*padding-top: 150px;*/
-        /*padding-bottom: 150px;*/
         justify-content: center;
     }
 

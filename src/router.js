@@ -10,6 +10,10 @@ export default new Router({
     {
       path: '/',
       name: 'home',
+    },
+    {
+      path: '/tables',
+      name: 'tables',
       component: () => import('./views/Home.vue'),
       meta: {
         bkColor: "#3EAF6F"

@@ -11,6 +11,9 @@
 
   export default {
     name: "app",
+    beforeCreate() {
+      this.$router.push({name: 'tables'})
+    },
     components: {NavBar},
     computed: {
       selectedBgColor() {
@@ -35,5 +38,6 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         height: 100vh;
+        transition: 0.4s;
     }
 </style>
