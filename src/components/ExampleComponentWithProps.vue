@@ -1,12 +1,18 @@
 <template>
   <div class="hello">
-      <h1>HELLO WORLD</h1>
+      <h1>{{message}}</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'ExampleComponentWithProps',
+  props: {
+    message: {
+      type: String,
+      required: true
+    }
+  }
 }
 </script>
 

@@ -1,12 +1,16 @@
 <template>
   <div>
-      <h1> hi </h1>
+      <example-component-with-porops message="HELLO WORLD"></example-component-with-porops>
   </div>
 </template>
 
 <script>
+    import ExampleComponentWithPorops from '../components/ExampleComponentWithProps'
 
 export default {
-  name: 'home'
+  name: 'home',
+  components: {
+    ExampleComponentWithPorops
+  }
 }
 </script>
