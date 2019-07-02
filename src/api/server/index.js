@@ -16,5 +16,4 @@ export class TablesApi {
       throw error.response.data
     }
   }
-
 }
