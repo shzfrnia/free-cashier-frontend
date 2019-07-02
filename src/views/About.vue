@@ -7,7 +7,7 @@
               v-for="tab in tabs"
               v-bind:key="tab"
               v-on:click="currentTab = tab.componentName"
-              v-bind:class="[{ active: currentTab === tab }]"
+              v-bind:class="[{ active: currentTab === tab.componentName }]"
       >
                 {{ tab.visibleName }}
       </button>
@@ -31,7 +31,7 @@
     },
     data() {
       return {
-        currentTab : 'MAP',
+        currentTab : 'google-map',
         tabs : [
           {
             componentName: 'google-map',
@@ -54,9 +54,8 @@
     .about{
         background-color:white;height: 100%;
     }
-    .text {
-      font-size: 40px;
-      margin-top: 1%;
+    .active {
+      background: red;
     }
     h1{
         margin-top:1%;
