@@ -19,6 +19,7 @@
 
 <style scoped>
     .wrapper {
+        border-radius: 10px;
         background: white;
         opacity: 0.95;
         padding: 20px;
