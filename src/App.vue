@@ -1,5 +1,5 @@
 <template>
-  <div style="background-repeat: round" :style="{'background-image': `url(${selectedBgColor})`}"  id="app">
+  <div :style="{'background-image': `url(${selectedBgColor})`}"  id="app">
       <nav-bar></nav-bar>
       <white-box>
           <transition name="component-fade" mode="out-in">
@@ -47,6 +47,8 @@
         text-align: center;
         height: 100vh;
         transition: 0.7s;
+        background-repeat: round;
+        background-size: 100%;
     }
 
 
