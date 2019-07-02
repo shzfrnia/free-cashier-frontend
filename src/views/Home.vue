@@ -1,6 +1,6 @@
 <template>
   <div>
-      <img width="100%" height="auto" src="../../public/СПАНЧ.png">
+      <img @click="$emit('spange-bob')" width="10%" height="auto" src="../../public/СПАНЧ.png">
   </div>
 </template>
 
@@ -9,4 +9,8 @@
 export default {
   name: 'home'
 }
+
 </script>
+<style scoped>
+
+</style>
