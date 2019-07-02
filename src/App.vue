@@ -25,9 +25,6 @@
     },
     computed: {
       selectedBgColor() {
-        // if (this.$route.path === '/home') return "#3EAF6F"
-        // return this.$route.meta.bkColor
-        //if (this.$route.path === '/home') return "https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/B1eYNZGrripnnry82/videoblocks-table-at-restaurant-blurred-background_rxthbuitx_thumbnail-full01.png"
         return this.$route.meta.bkImgUrl
       }
     }
