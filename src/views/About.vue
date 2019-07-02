@@ -65,6 +65,8 @@
         line-height: 50px;
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         transition: 0.5s;
+        outline: none;
+        border: none;
     }
 
 
