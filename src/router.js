@@ -25,7 +25,7 @@ export default new Router({
       name: 'about',
       component: () => import('./views/About.vue'),
       meta: {
-        bkColor: "rgb(108, 114, 208)",
+        bkColor: "rgb(203, 128, 56)",
         bkImgUrl: "About.jpg"
       }
     }
