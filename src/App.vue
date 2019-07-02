@@ -1,7 +1,9 @@
 <template>
   <div :style="{'background-image': `url(${selectedBgColor})`}"  id="app">
       <transition name="bounce">
-        <modal-window @submit="modal=false" v-if="modal"></modal-window>
+        <modal-window @submit="modal=false" v-if="modal">
+
+        </modal-window>
       </transition>
       <nav-bar></nav-bar>
       <white-box>

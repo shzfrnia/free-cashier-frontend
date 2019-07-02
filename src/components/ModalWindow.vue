@@ -2,37 +2,7 @@
     <div :style="styles" class="license-viewer">
         <div class="wrap">
             <div class="content">
-                <h3>Лuцензионное соглашение</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua. Adipiscing commodo elit at imperdiet dui accumsan.
-                    Sit amet nulla facilisi morbi tempus iaculis urna id volutpat. Sit amet luctus venenatis lectus magna.
-                    Viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est. Turpis egestas sed tempus urna et.
-                    Eget duis at tellus at urna condimentum mattis. Morbi non arcu risus quis. Sagittis id consectetur purus
-                    ut faucibus pulvinar. Libero justo laoreet sit amet. Cursus turpis massa tincidunt dui ut ornare lectus sit.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua. Adipiscing commodo elit at imperdiet dui accumsan.
-                    Sit amet nulla facilisi morbi tempus iaculis urna id volutpat. Sit amet luctus venenatis lectus magna.
-                    Viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est. Turpis egestas sed tempus urna et.
-                    Eget duis at tellus at urna condimentum mattis. Morbi non arcu risus quis. Sagittis id consectetur purus
-                    ut faucibus pulvinar. Libero justo laoreet sit amet. Cursus turpis massa tincidunt dui ut ornare lectus sit.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua. Adipiscing commodo elit at imperdiet dui accumsan.
-                    Sit amet nulla facilisi morbi tempus iaculis urna id volutpat. Sit amet luctus venenatis lectus magna.
-                    Viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est. Turpis egestas sed tempus urna et.
-                    Eget duis at tellus at urna condimentum mattis. Morbi non arcu risus quis. Sagittis id consectetur purus
-                    ut faucibus pulvinar. Libero justo laoreet sit amet. Cursus turpis massa tincidunt dui ut ornare lectus sit.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua. Adipiscing commodo elit at imperdiet dui accumsan.
-                    Sit amet nulla facilisi morbi tempus iaculis urna id volutpat. Sit amet luctus venenatis lectus magna.
-                    Viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est. Turpis egestas sed tempus urna et.
-                    Eget duis at tellus at urna condimentum mattis. Morbi non arcu risus quis. Sagittis id consectetur purus
-                    ut faucibus pulvinar. Libero justo laoreet sit amet. Cursus turpis massa tincidunt dui ut ornare lectus sit.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua. Adipiscing commodo elit at imperdiet dui accumsan.
-                    Sit amet nulla facilisi morbi tempus iaculis urna id volutpat. Sit amet luctus venenatis lectus magna.
-                    Viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est. Turpis egestas sed tempus urna et.
-                    Eget duis at tellus at urna condimentum mattis. Morbi non arcu risus quis. Sagittis id consectetur purus
-                    ut faucibus pulvinar. Libero justo laoreet sit amet. Cursus turpis massa tincidunt dui ut ornare lectus sit.</p>
+                <slot></slot>
                 <div class="button-group">
                     <button @click="closeWindowDialog" class="btn" label="Я прочитал и согласен с правилами"></button>
                 </div>
@@ -80,23 +50,20 @@
     }
 
     .wrap {
-        margin-top: 0px;
+        margin: 0 auto;
         padding: 10px;
         width: 70%;
-        height: 600px;
         position: relative;
         background: #F5F9FC;
     }
 
     .content {
-        position: absolute;
         padding: 10px;
     }
 
     .license-viewer {
         transition: 0.6s;
         position: fixed;
-        display: flex;
         background-color: rgba(66, 70, 62, 0.77);
         justify-content: center;
         width: 100%;
