@@ -16,7 +16,8 @@ export default new Router({
       name: 'tables',
       component: () => import('./views/Home.vue'),
       meta: {
-        bkColor: "#3EAF6F"
+        bkColor: "rgb(203, 128, 56)",
+        bkImgUrl: "Table.png"
       }
     },
     {
@@ -24,7 +25,8 @@ export default new Router({
       name: 'about',
       component: () => import('./views/About.vue'),
       meta: {
-        bkColor: "#BE0031"
+        bkColor: "rgb(203, 128, 56)",
+        bkImgUrl: "About.jpg"
       }
     }
   ]
