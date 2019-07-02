@@ -17,14 +17,14 @@
       return {
         routes: [
           {
-            icon: 'user-circle',
+            icon: 'utensils',
             route: '/tables',
-            bkColor: '#3EAF6F'
+            bkColor: 'rgb(203, 128, 56)'
           },
           {
-            icon: 'user',
+            icon: 'address-card',
             route: '/about',
-            bkColor : '#BE0031'
+            bkColor : 'rgb(108, 114, 208)'
           }
         ]
       }
@@ -39,8 +39,7 @@
 
 <style scoped>
     .my-btn-container {
-        display: flex;
-        justify-content: center;
+        position: relative;
     }
 
     .my-btn {
@@ -60,5 +59,6 @@
     }
     .router-link-active .my-btn{
         width: 80px;
+        box-shadow: 0 0 25px rgb(255, 255, 255);
     }
 </style>
