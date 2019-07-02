@@ -84,14 +84,13 @@
         padding: 10px;
         width: 70%;
         height: 600px;
+        position: relative;
         background: #F5F9FC;
     }
 
     .content {
         position: absolute;
-        height: 100%;
         padding: 10px;
-        overflow: auto;
     }
 
     .license-viewer {
