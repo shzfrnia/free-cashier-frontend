@@ -1,5 +1,10 @@
 <template>
-  <div style="background-repeat: round" :style="{'background-image': `url(${selectedBgColor})`}"  id="app">
+  <div :style="{'background-image': `url(${selectedBgColor})`}"  id="app">
+      <transition name="bounce">
+        <modal-window @submit="modal=false" v-if="modal">
+
+        </modal-window>
+      </transition>
       <nav-bar></nav-bar>
       <white-box>
           <transition name="component-fade" mode="out-in">
@@ -13,6 +18,7 @@
 <script>
   import NavBar from './components/NavBar'
   import WhiteBox from './components/WhiteBox'
+  import ModalWindow from './components/ModalWindow'
 
   export default {
     name: "app",
@@ -21,7 +27,13 @@
     },
     components: {
       NavBar,
-      WhiteBox
+      WhiteBox,
+      ModalWindow
+    },
+    data() {
+      return {
+        modal: true
+      }
     },
     computed: {
       selectedBgColor() {
@@ -30,6 +42,28 @@
     }
   }
 </script>
+
+<style scoped>
+    .bounce-enter-active {
+        animation: bounce-in .5s;
+    }
+    .bounce-leave-active {
+        animation: bounce-in .5s reverse;
+    }
+    @keyframes bounce-in {
+        0% {
+            transform: scale(0);
+        }
+        50% {
+            transform: scale(1.5);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+</style>
+
 
 
 <style>
@@ -47,6 +81,8 @@
         text-align: center;
         height: 100vh;
         transition: 0.7s;
+        background-repeat: round;
+        background-size: 100%;
     }
 
 
