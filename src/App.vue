@@ -2,13 +2,13 @@
   <div :style="{'background-image': `url(${selectedBgColor})`}"  id="app">
       <transition name="bounce">
         <modal-window @submit="modal=false" v-if="modal">
-
+            <reservation-form></reservation-form>
         </modal-window>
       </transition>
       <nav-bar></nav-bar>
       <white-box>
           <transition name="component-fade" mode="out-in">
-              <router-view/>
+              <router-view @spange-bob="modal=true"/>
           </transition>
       </white-box>
   </div>
@@ -19,6 +19,7 @@
   import NavBar from './components/NavBar'
   import WhiteBox from './components/WhiteBox'
   import ModalWindow from './components/ModalWindow'
+  import ReservationForm from './components/ReservationForm'
 
   export default {
     name: "app",
@@ -28,7 +29,8 @@
     components: {
       NavBar,
       WhiteBox,
-      ModalWindow
+      ModalWindow,
+      ReservationForm
     },
     data() {
       return {
@@ -43,9 +45,10 @@
   }
 </script>
 
+<!--BOUNCE ANIMATION-->
 <style scoped>
     .bounce-enter-active {
-        animation: bounce-in .5s;
+        animation: bounce-in .7s;
     }
     .bounce-leave-active {
         animation: bounce-in .5s reverse;
@@ -55,7 +58,7 @@
             transform: scale(0);
         }
         50% {
-            transform: scale(1.5);
+            transform: scale(1.20);
         }
         100% {
             transform: scale(1);
@@ -63,8 +66,6 @@
     }
 
 </style>
-
-
 
 <style>
     @import 'assets/fonts/font-awesome.css';

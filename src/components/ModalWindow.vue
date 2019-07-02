@@ -4,7 +4,9 @@
             <div class="content">
                 <slot></slot>
                 <div class="button-group">
-                    <button @click="closeWindowDialog" class="btn" label="Я прочитал и согласен с правилами"></button>
+                    <button @click="closeWindowDialog" class="btn">
+                        CLOSE ME
+                    </button>
                 </div>
             </div>
         </div>
@@ -50,7 +52,7 @@
     }
 
     .wrap {
-        margin: 0 auto;
+        margin: 80px auto;
         padding: 10px;
         width: 70%;
         position: relative;
