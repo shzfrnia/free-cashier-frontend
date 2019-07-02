@@ -1,5 +1,6 @@
 <template>
   <div style="background-repeat: round" :style="{'background-image': `url(${selectedBgColor})`}"  id="app">
+      <modal-window @submit="modal=false" v-if="modal"></modal-window>
       <nav-bar></nav-bar>
       <white-box>
           <transition name="component-fade" mode="out-in">
@@ -13,6 +14,7 @@
 <script>
   import NavBar from './components/NavBar'
   import WhiteBox from './components/WhiteBox'
+  import ModalWindow from './components/ModalWindow'
 
   export default {
     name: "app",
@@ -21,7 +23,13 @@
     },
     components: {
       NavBar,
-      WhiteBox
+      WhiteBox,
+      ModalWindow
+    },
+    data() {
+      return {
+        modal: true
+      }
     },
     computed: {
       selectedBgColor() {
