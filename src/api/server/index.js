@@ -1,4 +1,5 @@
 import {API_POINT} from "./api_point";
+import axios from 'axios'
 
 const API_ROUTES = {
   tables: `${API_POINT}/tables`
@@ -8,9 +9,11 @@ const API_ROUTES = {
 
 export class TablesApi {
   static async getTables() {
-    const req = `${API_ROUTES.tables}` // Представь что это запрос
-    if ("There is not exeptions" == true){
-      return req
+    try {
+      const result = await axios.post(API_ROUTES.tables)
+      return result.data
+    } catch(error) {
+      throw error.response.data
     }
   }
 

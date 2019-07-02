@@ -1,0 +1,2 @@
+import {FakeArray} from "./data";
+
