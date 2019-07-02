@@ -1,5 +1,5 @@
 <template>
-  <div :style="{'background-image': `url(${selectedBgColor})`}"  id="app">
+  <div style="background-repeat: round" :style="{'background-image': `url(${selectedBgColor})`}"  id="app">
       <nav-bar></nav-bar>
       <white-box>
           <transition name="component-fade" mode="out-in">
@@ -25,9 +25,6 @@
     },
     computed: {
       selectedBgColor() {
-        // if (this.$route.path === '/home') return "#3EAF6F"
-        // return this.$route.meta.bkColor
-        if (this.$route.path === '/home') return "https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/B1eYNZGrripnnry82/videoblocks-table-at-restaurant-blurred-background_rxthbuitx_thumbnail-full01.png"
         return this.$route.meta.bkImgUrl
       }
     }
