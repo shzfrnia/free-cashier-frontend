@@ -1,5 +1,5 @@
 <template>
-  <div :style="{'background-image': `url(${selectedBgColor})`}"  id="app">
+  <div style="background-repeat: round" :style="{'background-image': `url(${selectedBgColor})`}"  id="app">
       <nav-bar></nav-bar>
       <white-box>
           <transition name="component-fade" mode="out-in">
