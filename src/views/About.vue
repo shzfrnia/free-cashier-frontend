@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<style scope>
+<style scoped>
 img{height: 300px;}
 .about{background-color:white;height: 100%;}
 .text {
