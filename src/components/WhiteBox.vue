@@ -21,7 +21,7 @@
     .wrapper {
         border-radius: 10px;
         background: white;
-        opacity: 0.95;
+        opacity: 0.92;
         padding: 20px;
         width: 60%;
         margin: 10px auto;
