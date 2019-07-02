@@ -1,6 +1,7 @@
 <template>
     <div>
         <img src="../../public/ы.jpg"/>
+        <hr>
         <h1>Контактная информация</h1>
         <div class="text">Наш адрес : Ленина 87</div>
         <div class="text">Контактный номер : 506078</div>
@@ -22,13 +23,12 @@
         background-color:#BE0031; /* Цвет линии */
         color:#BE0031; /* Цвет линии для IE6-7 */
         height: 8px; /* Толщина линии */
+        border-radius: 4px;
     }
 
     img {
         height: 300px;
     }
-    .about {
-        background-color:white;height: 100%;
-    }
+   .text{margin-top: 1%;font-size: 30px;}
 
 </style>

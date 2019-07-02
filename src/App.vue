@@ -1,5 +1,5 @@
 <template>
-  <div style="background-repeat: round" :style="{'background-image': `url(${selectedBgColor})`}"  id="app">
+  <div :style="{'background-image': `url(${selectedBgColor})`}"  id="app">
       <modal-window @submit="modal=false" v-if="modal"></modal-window>
       <nav-bar></nav-bar>
       <white-box>
@@ -49,11 +49,14 @@
     }
 
     #app {
+        font-family: 'Roboto', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         height: 100vh;
         transition: 0.7s;
+        background-repeat: round;
+        background-size: 100%;
     }
 
 
