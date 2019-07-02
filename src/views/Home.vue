@@ -1,6 +1,6 @@
 <template>
   <div>
-      <img width="800" src="../../public/СПАНЧ.png">
+      <img width="100%" src="../../public/СПАНЧ.png">
   </div>
 </template>
 
