@@ -1,12 +1,15 @@
 <template>
   <div class="about">
-      <button
-              v-for="tab in tabs"
-              v-bind:key="tab"
-              v-on:click="currentTab = tab.componentName"
-              v-bind:class="[{ active: currentTab === tab.componentName }]">
-        {{ tab.visibleName }}
-      </button>
+      <div class="my-btn-container">
+          <button
+                  v-for="tab in tabs"
+                  :key="tab.icon"
+                  v-on:click="currentTab = tab.componentName"
+                  class="my-btn"
+                  v-bind:class="[{ active: currentTab === tab.componentName }]">
+              <i style="color: red;" :class="['fas', `fa-${tab.icon}`]"></i>
+          </button>
+      </div>
       <keep-alive>
         <component v-bind:is="currentTab"></component>
       </keep-alive>
@@ -29,11 +32,13 @@
         tabs : [
           {
             componentName: 'contact-info',
-            visibleName: "Contacts"
+            visibleName: "Contacts",
+            icon: 'user'
           },
           {
             componentName: 'google-map',
-            visibleName: 'MAP'
+            visibleName: 'MAP',
+            icon: "map-marker"
           }
         ]
       }
@@ -42,6 +47,27 @@
 </script>
 
 <style scoped>
+    .my-btn-container {
+        position: relative;
+    }
+
+    .my-btn {
+        display: inline-block;
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+        font-size: 25px;
+        color: gray;
+        border-radius: 25px;
+        background-color: white;
+        text-align: center;
+        line-height: 50px;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        transition: 0.5s;
+    }
+
+
     .active {
       background: red;
     }
