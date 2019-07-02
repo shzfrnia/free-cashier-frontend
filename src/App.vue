@@ -1,21 +1,31 @@
 <template>
-  <div :style="{'background-color': selectedBgColor}"  id="app">
+  <div style="background-repeat: round" :style="{'background-image': `url(${selectedBgColor})`}"  id="app">
       <nav-bar></nav-bar>
-      <router-view/>
+      <white-box>
+          <transition name="component-fade" mode="out-in">
+              <router-view/>
+          </transition>
+      </white-box>
   </div>
 </template>
 
 
 <script>
   import NavBar from './components/NavBar'
+  import WhiteBox from './components/WhiteBox'
 
   export default {
     name: "app",
-    components: {NavBar},
+    beforeCreate() {
+      this.$router.push({name: 'tables'})
+    },
+    components: {
+      NavBar,
+      WhiteBox
+    },
     computed: {
       selectedBgColor() {
-        if (this.$route.path === '/home') return "#3EAF6F"
-        return this.$route.meta.bkColor
+        return this.$route.meta.bkImgUrl
       }
     }
   }
@@ -31,9 +41,19 @@
     }
 
     #app {
+        font-family: 'Roboto', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         height: 100vh;
+        transition: 0.7s;
+    }
+
+
+    .component-fade-enter-active, .component-fade-leave-active {
+        transition: opacity .25s ease;
+    }
+    .component-fade-enter, .component-fade-leave-to {
+        opacity: 0;
     }
 </style>

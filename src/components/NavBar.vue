@@ -17,16 +17,21 @@
       return {
         routes: [
           {
-            icon: 'user-circle',
-            route: '/',
-            bkColor: '#3EAF6F'
+            icon: 'utensils',
+            route: '/tables',
+            bkColor: 'rgb(203, 128, 56)'
           },
           {
-            icon: 'user',
+            icon: 'address-card',
             route: '/about',
-            bkColor : '#BE0031'
+            bkColor : 'rgb(108, 114, 208)'
           }
         ]
+      }
+    },
+    computed: {
+      hotFixRoute() {
+        return this.$route.path !== '/'
       }
     }
   }
@@ -34,11 +39,7 @@
 
 <style scoped>
     .my-btn-container {
-        display: flex;
-        /*background-color: black;*/
-        /*padding-top: 150px;*/
-        /*padding-bottom: 150px;*/
-        justify-content: center;
+        position: relative;
     }
 
     .my-btn {
@@ -58,5 +59,6 @@
     }
     .router-link-active .my-btn{
         width: 80px;
+        box-shadow: 0 0 25px rgb(255, 255, 255);
     }
 </style>

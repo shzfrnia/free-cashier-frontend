@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1> hi </h1>
+      <img width="100%" height="auto" src="../../public/СПАНЧ.png">
   </div>
 </template>
 
