@@ -6,14 +6,40 @@
         <div class="text">Наш адрес : Ленина 87</div>
         <div class="text">Контактный номер : 506078</div>
         <div class="text">Время работы : с 12:00 до 24:00, ежедневно</div>
+        <div class="text">
+            <button @click="showWindowDialog" class="btn">
+                Show
+            </button>
+        </div>
+        <modal-window @submit="mapModal=false" v-if="mapModal">
+            <google-map></google-map>
+        </modal-window>
     </div>
 </template>
 
 <script>
+    import GoogleMap from './GoogleMap'
+    import ModalWindow from './ModalWindow'
+
   export default {
-    name: "ContactInfo"
+    name: "ContactInfo",
+    components: {
+        GoogleMap,
+        ModalWindow
+    },
+    data(){
+        return {
+            mapModal: false
+        }
+    },
+    methods: {
+        showWindowDialog() {
+            this.mapModal = true
+        }
+    }
   }
 </script>
+
 
 <style scoped>
     h1 {
@@ -28,7 +54,7 @@
     }
 
     img {
-        height: 300px;
+        width: 70%;
     }
    .text{margin-top: 1%;font-size: 30px;}
 
