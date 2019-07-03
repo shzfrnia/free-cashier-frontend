@@ -15,13 +15,23 @@
         </select><br/> -->
         <div class="text ">Время брони <input type="time" name="Booking_time" class="text"></div><br/>
         <div class="text red">Стол свободен до @TIME-30мин</div><br/>
-        <input type="submit" value="Забронировать" name="submit" id="submit" class="text">
+<!--        <input type="submit" value="Забронировать" name="submit" id="submit" class="text">-->
+        <input @click="closeWindowDialog" type="button" value="Забронировать" name="submit" id="submit" class="text">
       </form>
 </template>
 
 <script>
   export default {
-    name: "ReservationForm"
+    name: "ReservationForm",
+    methods: {
+      closeWindowDialog() {
+        this.$store.state.blockScreen = false
+        setTimeout(this.unsetModalWindow, 130)
+      },
+      unsetModalWindow() {
+        this.$store.state.showModalWindow = false
+      }
+    }
   }
 
   // $(function(){
@@ -47,7 +57,7 @@
     .red{
         color: red;
     }
-    .phone{width:190;}
+
     .head{font-weight: bold;}
 
 #submit:hover { background: rgb(218, 149, 22); } 

@@ -1,13 +1,9 @@
 <template>
-    <div :style="styles" class="license-viewer">
+    <div :style="styles" class="license-viewer" @click="closeWindowDialog">
         <div class="wrap">
             <div class="content">
-                <slot></slot>
-                <div class="button-group">
-                    <button @click="closeWindowDialog" class="btn">
-                        CLOSE ME
-                    </button>
-                </div>
+                <slot>
+                </slot>
             </div>
         </div>
     </div>
@@ -19,7 +15,7 @@
     name: "ModalWindow",
     data() {
       return {
-        blockScreen: true
+        blockScreen: this.$store.state.blockScreen
       }
     },
     computed: {
@@ -31,11 +27,12 @@
     },
     methods: {
       closeWindowDialog() {
-        this.blockScreen = false
+        this.$store.state.blockScreen = false
+        this.blockScreen = this.$store.state.blockScreen
         setTimeout(this.emit, 130)
       },
       emit(){
-        this.$emit('submit')
+        this.$store.state.showModalWindow = false
       }
     }
   }
