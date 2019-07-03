@@ -29,7 +29,7 @@
     },
     data(){
         return {
-            mapModal: true
+            mapModal: false
         }
     },
     methods: {

@@ -47,7 +47,7 @@
     .red{
         color: red;
     }
-    .phone{width:190;}
+    .phone{width:190px;}
     .head{font-weight: bold;}
 
 #submit:hover { background: rgb(218, 149, 22); } 
