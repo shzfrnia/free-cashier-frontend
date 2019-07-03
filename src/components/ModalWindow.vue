@@ -1,11 +1,17 @@
 <template>
-    <div :style="styles" class="license-viewer" @click="closeWindowDialog">
-        <div class="wrap">
-            <div class="content">
-                <slot>
-                </slot>
+    <div :style="styles" class="license-viewer">
+        <transition name="bounce">
+            <div v-if="showModal" class="wrap" :style="{'width': widthSize + '%'}">
+                <div class="content">
+                    <slot></slot>
+                    <div v-if="closeButton" class="button-group">
+                        <button @click="closeWindowDialog" class="btn">
+                            CLOSE ME
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
+        </transition>
     </div>
 </template>
 
@@ -13,10 +19,24 @@
 
   export default {
     name: "ModalWindow",
+    props: {
+      widthSize: {
+        type: Number,
+        default: 70
+      },
+      closeButton: {
+        type: Boolean,
+        default: false
+      }
+    },
     data() {
       return {
-        blockScreen: this.$store.state.blockScreen
+        blockScreen: true,
+        showModal: false
       }
+    },
+    created() {
+      setTimeout(this.showModalDialog, 130)
     },
     computed: {
       styles() {
@@ -26,17 +46,47 @@
       }
     },
     methods: {
+      showModalDialog() {
+        this.showModal = true
+      },
       closeWindowDialog() {
         this.$store.state.blockScreen = false
         this.blockScreen = this.$store.state.blockScreen
         setTimeout(this.emit, 130)
       },
-      emit(){
-        this.$store.state.showModalWindow = false
+      emit() {
+        this.showModal = false
+        setTimeout(this.foo, 600)
+        // this.$emit('submit')
+      },
+      foo() {
+        this.$emit('submit')
       }
     }
   }
 </script>
+
+<!--BOUNCE ANIMATION-->
+<style scoped>
+    .bounce-enter-active {
+        animation: bounce-in .7s;
+    }
+    .bounce-leave-active {
+        animation: bounce-in .5s reverse;
+    }
+    @keyframes bounce-in {
+        0% {
+            transform: scale(0);
+        }
+        50% {
+            transform: scale(1.20);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+</style>
 
 <style scoped>
     .button-group {
@@ -61,11 +111,14 @@
     }
 
     .license-viewer {
-        transition: 0.6s;
+        transition: .6s;
         position: fixed;
-        background-color: rgba(66, 70, 62, 0.77);
+        background-color: rgba(0, 0, 0, 0);
+        justify-content: center;
         width: 100%;
         height: 100%;
+        right: 0;
+        top:0;
         z-index: 1;
         top: 0;
         right: 0;

@@ -41,7 +41,8 @@
 </template>
 
 <script>
-    // import TablesWrapper from '../components/TablesWrapper'
+    import ModalWindow from '../components/ModalWindow'
+    import ReservationForm from '../components/ReservationForm'
 
 export default {
     name: 'home',
