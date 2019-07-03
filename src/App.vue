@@ -4,6 +4,9 @@
         <modal-window @submit="modal=false" v-if="modal">
             <reservation-form></reservation-form>
         </modal-window>
+        <modal-window @submit="mapModal=false" v-if="mapModal">
+            <google-map></google-map>
+        </modal-window>
       </transition>
       <nav-bar></nav-bar>
       <white-box>
@@ -20,6 +23,7 @@
   import WhiteBox from './components/WhiteBox'
   import ModalWindow from './components/ModalWindow'
   import ReservationForm from './components/ReservationForm'
+  import GoogleMap from './components/GoogleMap'
 
   export default {
     name: "app",
@@ -30,11 +34,13 @@
       NavBar,
       WhiteBox,
       ModalWindow,
-      ReservationForm
+      ReservationForm,
+        GoogleMap
     },
     data() {
       return {
-        modal: true
+        modal: false,
+        mapModal: true
       }
     },
     computed: {
