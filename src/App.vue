@@ -40,7 +40,7 @@
     data() {
       return {
         modal: false,
-        mapModal: true
+        mapModal: false
       }
     },
     computed: {
@@ -88,8 +88,7 @@
         text-align: center;
         height: 100vh;
         transition: 0.7s;
-        background-repeat: round;
-        background-size: 100%;
+        background-size: cover;
     }
 
 

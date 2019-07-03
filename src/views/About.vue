@@ -1,48 +1,17 @@
 <template>
   <div class="about">
-      <div class="my-btn-container">
-          <button
-                  v-for="tab in tabs"
-                  :key="tab.icon"
-                  v-on:click="currentTab = tab.componentName"
-                  class="my-btn"
-                  v-bind:class="[{ active: currentTab === tab.componentName }]">
-              <i style="color: red;" :class="['fas', `fa-${tab.icon}`]"></i>
-          </button>
-      </div>
-      <keep-alive>
-        <component v-bind:is="currentTab"></component>
-      </keep-alive>
+      <contact-info></contact-info>
   </div>
 </template>
 
 <script>
-    import GoogleMap from '../components/GoogleMap'
     import ContactInfo from '../components/ContactInfo'
 
   export default {
     name: "about",
     components: {
-      GoogleMap,
       ContactInfo
     },
-    data() {
-      return {
-        currentTab : 'contact-info',
-        tabs : [
-          {
-            componentName: 'contact-info',
-            visibleName: "Contacts",
-            icon: 'user'
-          },
-          {
-            componentName: 'google-map',
-            visibleName: 'MAP',
-            icon: "map-marker"
-          }
-        ]
-      }
-    }
   }
 </script>
 

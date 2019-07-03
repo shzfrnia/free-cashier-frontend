@@ -52,7 +52,7 @@
     }
 
     .wrap {
-        margin: 80px auto;
+        margin: 4% auto;
         padding: 10px;
         width: 70%;
         position: relative;
@@ -67,9 +67,10 @@
         transition: 0.6s;
         position: fixed;
         background-color: rgba(66, 70, 62, 0.77);
-        justify-content: center;
         width: 100%;
         height: 100%;
         z-index: 1;
+        top: 0;
+        right: 0;
     }
 </style>
