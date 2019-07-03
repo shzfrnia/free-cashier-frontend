@@ -1,7 +1,6 @@
 <template>
   <div>
       <img @click="$emit('spange-bob')" width="10%" height="auto" src="../../public/СПАНЧ.png">
-<!--      <img @click="tables" width="10%" height="auto" src="../../public/СПАНЧ.png">-->
       <tables-wrapper :tables="foo()"></tables-wrapper>
   </div>
 </template>

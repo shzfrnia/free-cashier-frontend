@@ -1,17 +1,15 @@
 <template>
   <div :style="{'background-image': `url(${selectedBgColor})`}"  id="app">
       <transition name="bounce">
-        <modal-window @submit="modal=false" v-if="modal">
+        <modal-window v-if="showWindowDialog">
             <reservation-form></reservation-form>
         </modal-window>
-        <modal-window @submit="mapModal=false" v-if="mapModal">
-            <google-map></google-map>
-        </modal-window>
       </transition>
+
       <nav-bar></nav-bar>
       <white-box>
           <transition name="component-fade" mode="out-in">
-              <router-view @spange-bob="modal=true"/>
+              <router-view @spange-bob="open()"/>
           </transition>
       </white-box>
   </div>
@@ -23,7 +21,6 @@
   import WhiteBox from './components/WhiteBox'
   import ModalWindow from './components/ModalWindow'
   import ReservationForm from './components/ReservationForm'
-  import GoogleMap from './components/GoogleMap'
 
   export default {
     name: "app",
@@ -34,18 +31,25 @@
       NavBar,
       WhiteBox,
       ModalWindow,
-      ReservationForm,
-        GoogleMap
+      ReservationForm
     },
     data() {
       return {
-        modal: false,
-        mapModal: true
+        modal: this.$store.state.showModalWindow
       }
     },
     computed: {
       selectedBgColor() {
         return this.$route.meta.bkImgUrl
+      },
+      showWindowDialog () {
+        return this.$store.state.showModalWindow
+      }
+    },
+    methods: {
+      open() {
+        this.$store.state.showModalWindow = true
+        this.$store.state.blockScreen = true
       }
     }
   }
@@ -91,7 +95,6 @@
         background-repeat: round;
         background-size: 100%;
     }
-
 
     .component-fade-enter-active, .component-fade-leave-active {
         transition: opacity .25s ease;
