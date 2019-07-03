@@ -3,7 +3,6 @@
         <div class="wrap">
             <div class="content">
                 <slot>
-                    <component :is="$store.state.modalWindowName"></component>
                 </slot>
             </div>
         </div>
