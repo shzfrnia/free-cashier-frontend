@@ -9,7 +9,7 @@ export default new Vuex.Store({
     tables: [],
     blockScreen: false,
     showModalWindow: false,
-    modalWindowName: 'reservation-form'
+    modalWindowName: 'google-map'
   },
   mutations: {
     setTables(state, tables) {

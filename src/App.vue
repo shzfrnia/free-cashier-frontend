@@ -2,7 +2,7 @@
   <div :style="{'background-image': `url(${selectedBgColor})`}"  id="app">
       <transition name="bounce">
         <modal-window v-if="showWindowDialog">
-            <reservation-form></reservation-form>
+            <component :is="$store.state.modalWindowName"></component>
         </modal-window>
       </transition>
 
@@ -21,6 +21,7 @@
   import WhiteBox from './components/WhiteBox'
   import ModalWindow from './components/ModalWindow'
   import ReservationForm from './components/ReservationForm'
+  import GoogleMap from './components/GoogleMap'
 
   export default {
     name: "app",
@@ -31,7 +32,8 @@
       NavBar,
       WhiteBox,
       ModalWindow,
-      ReservationForm
+      ReservationForm,
+      GoogleMap
     },
     data() {
       return {
