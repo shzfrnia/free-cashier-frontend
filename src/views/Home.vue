@@ -1,6 +1,9 @@
 <template>
     <div>
         <!--<img @click="$emit('spange-bob')" width="10%" height="auto" src="../../public/СПАНЧ.png">-->
+        <modal-window v-if="showReservationForm" @submit="showReservationForm=false">
+            <reservation-form :reservation-id="reservationTableId"></reservation-form>
+        </modal-window>
 
         <div class="booking">
             <h2>Выберите место</h2>
@@ -13,29 +16,56 @@
                 <!--Карта-->
                 <img src="../../public/map.svg">
 
+<!--            BETA-->
+<!--                <div-->
+<!--                        style="display: inline-block;"-->
+<!--                        :key="table.id"-->
+<!--                        v-for="table in getTables()"-->
+<!--                        class = "tbl-figure-m"-->
+<!--                        @click="openReservationForm(table.id)"-->
+<!--                >-->
+<!--                    <div>{{table.size}}</div>-->
+<!--                </div>-->
+
+
+
+
+
                 <!--Столики-->
-                <div @click="$emit('spange-bob')" class = "tbl-figure-m" id = "map-tbl-1">
+                <div @click="openReservationForm(getTables()[0].id)" class = "tbl-figure-m" id = "map-tbl-1">
                     <div class = "nmbr-places" style="transform: rotate(-90deg);;">4</div>
                 </div>
-                <div @click="$emit('spange-bob')" class = "tbl-figure-m" id = "map-tbl-2">
+                <div @click="openReservationForm(getTables()[7].id)" class = "tbl-figure-m" id = "map-tbl-2">
                     <div class = "nmbr-places" style="transform: rotate(-90deg);">4</div>
                 </div>
-                <div @click="$emit('spange-bob')" class = "tbl-figure-m" id = "map-tbl-3"><div class = "nmbr-places">4</div></div>
-                <div @click="$emit('spange-bob')" class = "tbl-figure-s" id = "map-tbl-4"><div class = "nmbr-places">2</div></div>
-                <div @click="$emit('spange-bob')" class = "tbl-figure-m" id = "map-tbl-5"><div class = "nmbr-places">4</div></div>
-                <div @click="$emit('spange-bob')" class = "tbl-figure-m" id = "map-tbl-6"><div class = "nmbr-places">4</div></div>
-                <div @click="$emit('spange-bob')" class = "tbl-figure-s" id = "map-tbl-7"><div class = "nmbr-places">2</div></div>
-                <div @click="$emit('spange-bob')" class = "tbl-figure-l" id = "map-tbl-8"><div class = "nmbr-places">6</div></div>
-                <div @click="$emit('spange-bob')" class = "tbl-figure-l" id = "map-tbl-9"><div class = "nmbr-places">6</div></div>
-                <div @click="$emit('spange-bob')" class = "tbl-figure-xl" id = "map-tbl-10"><div class = "nmbr-places">8</div></div>
-                <div @click="$emit('spange-bob')" class = "tbl-figure-xl" id = "map-tbl-11"><div class = "nmbr-places">8</div></div>
+                <div @click="" class = "tbl-figure-m" id = "map-tbl-3">
+                    <div class = "nmbr-places">4</div>
+                </div>
+                <div @click="" class = "tbl-figure-s" id = "map-tbl-4">
+                    <div class = "nmbr-places">2</div>
+                </div>
+                <div @click="" class = "tbl-figure-m" id = "map-tbl-5">
+                    <div class = "nmbr-places">4</div></div>
+                <div @click="" class = "tbl-figure-m" id = "map-tbl-6">
+                    <div class = "nmbr-places">4</div>
+                </div>
+                <div @click="" class = "tbl-figure-s" id = "map-tbl-7">
+                    <div class = "nmbr-places">2</div>
+                </div>
+                <div @click="" class = "tbl-figure-l" id = "map-tbl-8">
+                    <div class = "nmbr-places">6</div>
+                </div>
+                <div @click="" class = "tbl-figure-l" id = "map-tbl-9">
+                    <div class = "nmbr-places">6</div>
+                </div>
+                <div @click="" class = "tbl-figure-xl" id = "map-tbl-10">
+                    <div class = "nmbr-places">8</div>
+                </div>
+                <div @click="" class = "tbl-figure-xl" id = "map-tbl-11">
+                    <div class = "nmbr-places">8</div>
+                </div>
             </div>
         </div>
-<!--        <div>-->
-<!--            <img @click="$emit('spange-bob')" width="10%" height="auto" src="../../public/СПАНЧ.png">-->
-<!--            &lt;!&ndash;      <img @click="tables" width="10%" height="auto" src="../../public/СПАНЧ.png">&ndash;&gt;-->
-<!--            <tables-wrapper :tables="foo()"></tables-wrapper>-->
-<!--        </div>-->
     </div>
 
 </template>
@@ -46,23 +76,26 @@
 
 export default {
     name: 'home',
-    // components: {
-    //     TablesWrapper
-    // },
+    components: {
+      ModalWindow,
+      ReservationForm
+    },
     data() {
         return {
+            showReservationForm: false,
             tablesFetchInterval: null,
-            tables: this.$store.state.tables
+            tables: this.$store.state.tables,
+            reservationTableId: null
         }
     },
     methods: {
-        foo() {
-            const result = this.$store.state.tables
-            return result
+        getTables() {
+            return this.$store.state.tables
+        },
+        openReservationForm(id) {
+          this.reservationTableId = id
+          this.showReservationForm = true
         }
-    },
-    computed: {
-
     },
     async created() {
         await this.$store.dispatch('fetchTables','0')

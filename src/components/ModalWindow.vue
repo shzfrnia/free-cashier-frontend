@@ -56,10 +56,10 @@
       },
       emit() {
         this.showModal = false
-        setTimeout(this.foo, 600)
+        setTimeout(this.callEmit, 600)
         // this.$emit('submit')
       },
-      foo() {
+      callEmit() {
         this.$emit('submit')
       }
     }

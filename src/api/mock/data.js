@@ -9,6 +9,56 @@ export const FakeTables = {
             id: 1,
             size: 3,
             reservation: null
+        },
+        {
+            id: 2,
+            size: 3,
+            reservation: null
+        },
+        {
+            id: 3,
+            size: 3,
+            reservation: null
+        },
+        {
+            id: 4,
+            size: 3,
+            reservation: null
+        },
+        {
+            id: 5,
+            size: 3,
+            reservation: null
+        },
+        {
+            id: 6,
+            size: 3,
+            reservation: null
+        },
+        {
+            id: 7,
+            size: 3,
+            reservation: null
+        },
+        {
+            id: 8,
+            size: 3,
+            reservation: null
+        },
+        {
+            id: 9,
+            size: 3,
+            reservation: null
+        },
+        {
+            id: 10,
+            size: 3,
+            reservation: null
+        },
+        {
+            id: 11,
+            size: 3,
+            reservation: null
         }
     ],
     '1': [

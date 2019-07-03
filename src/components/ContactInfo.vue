@@ -2,9 +2,9 @@
     <div>
         <ModalWindow
                 v-if="showMap"
-                width-size="35"
+                :width-size="35"
                 @submit="showMap=false"
-                close-button="true"
+                :close-button="true"
         >
             <google-map></google-map>
         </ModalWindow>
@@ -15,14 +15,6 @@
             <i @click="showMap=true" style="color: red;" class="fas fa-map-marker"></i></div>
         <div class="text">Контактный номер : 506078</div>
         <div class="text">Время работы : с 12:00 до 24:00, ежедневно</div>
-        <div class="text">
-            <button @click="showWindowDialog" class="btn">
-                Show
-            </button>
-        </div>
-        <modal-window @submit="mapModal=false" v-if="mapModal">
-            <google-map></google-map>
-        </modal-window>
     </div>
 </template>
 
@@ -49,6 +41,7 @@
     h1 {
         margin-top:1%;
     }
+
     hr {
         border: none; /* Убираем границу */
         background-color:#BE0031; /* Цвет линии */
@@ -60,6 +53,9 @@
     img {
         width: 70%;
     }
-   .text{margin-top: 1%;font-size: 30px;}
+
+   .text{
+       margin-top: 1%;font-size: 30px;
+   }
 
 </style>

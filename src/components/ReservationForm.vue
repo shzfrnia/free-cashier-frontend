@@ -1,5 +1,6 @@
 <template>
     <form>
+        <h1>You trying reservation table : {{reservationId}}</h1>
         <div class="text "> Имя <input type="text" name="Name" class="text"></div><br/>
         <div class="text ">Контактный номер <input type="tel" name="Phone" class="text" maxlength="11"></div><br/>
         <div class="text ">Время брони <input type="time" name="Booking_time" class="text"></div><br/>
@@ -11,6 +12,12 @@
 <script>
   export default {
     name: "ReservationForm",
+    props: {
+      reservationId: {
+        type: Number,
+        required: true
+      }
+    },
     methods: {
       submitForm() {
         this.$parent.closeWindowDialog()

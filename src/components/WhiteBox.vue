@@ -22,6 +22,7 @@
         border-radius: 10px;
         background: white;
         opacity: 0.92;
+        overflow: auto;
         padding: 20px;
         width: 60%;
         margin: 10px auto;
