@@ -1,10 +1,10 @@
 <template>
     <div :style="styles" class="license-viewer">
         <transition name="bounce">
-            <div v-if="showModal" class="wrap">
+            <div v-if="showModal" class="wrap" :style="{'width': widthSize + '%'}">
                 <div class="content">
                     <slot></slot>
-                    <div class="button-group">
+                    <div v-if="closeButton" class="button-group">
                         <button @click="closeWindowDialog" class="btn">
                             CLOSE ME
                         </button>
@@ -19,6 +19,16 @@
 
   export default {
     name: "ModalWindow",
+    props: {
+      widthSize: {
+        type: Number,
+        default: 70
+      },
+      closeButton: {
+        type: Boolean,
+        default: false
+      }
+    },
     data() {
       return {
         blockScreen: true,
