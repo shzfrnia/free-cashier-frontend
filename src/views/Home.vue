@@ -9,6 +9,9 @@
 <!--            <h2>Выберите место</h2>-->
             <div class="booking-map">
                 <h2>Выберите место</h2>
+                <div class="date" @click="getDate">Выберите дату брони 
+                    <input v-model="today" type="date" id="date"/>
+                </div>
                 <div class="legend">
                     <div class="legend-list"><div class="tbl-icon tbl-free"></div>Свободен</div>
                     <div class="legend-list"><div class="tbl-icon tbl-part-occupied"></div>Частично занят</div>
@@ -75,6 +78,7 @@
 <script>
     import ModalWindow from '../components/ModalWindow'
     import ReservationForm from '../components/ReservationForm'
+    import moment from 'moment'
 
 export default {
     name: 'home',
@@ -87,7 +91,8 @@ export default {
             showReservationForm: false,
             tablesFetchInterval: null,
             tables: this.$store.state.tables,
-            reservationTableId: null
+            reservationTableId: null,
+            today: ''
         }
     },
     methods: {
@@ -97,10 +102,16 @@ export default {
         openReservationForm(id) {
           this.reservationTableId = id
           this.showReservationForm = true
+        },
+        getDate(){
+            // var today = moment().format('YYYY-MM-DD');
+            // document.getElementById("date").value = today;
         }
     },
     async created() {
         await this.$store.dispatch('fetchTables','0')
+        this.today = moment().format('YYYY-MM-DD')
+        // window.console.log(new Date())
         this.tablesFetchInterval = window.setInterval(() => this.$store.dispatch('fetchTables','0'), 5000)
     },
     beforeRouteLeave(to, from, next) {
@@ -111,6 +122,17 @@ export default {
 
 </script>
 <style scoped>
+    #date{    
+       border-radius: 5px;
+       height: 25px;
+       outline: none;}
+    .date{
+        margin: auto;
+        height: 30px;
+        top: 2%;
+        right: -55%;
+        position: absolute;
+    }
     h2 {
         margin: auto;
         height: 30px;
