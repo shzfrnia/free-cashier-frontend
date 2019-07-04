@@ -1,15 +1,14 @@
 <template>
     <div class="form">
-        <h1>{{$store.getters.isAuthenticated}} </h1>
         <div class="form-group">
-            <p v-if="hasError">{{errorMessage}}</p>
+            <p class="text-danger" v-if="hasError">{{errorMessage}}</p>
             <label class="form-label">
                 <p>Login</p>
-                <input required v-model="creds.login" class="form-input" type="text" placeholder="login">
+                <input @input="hasError=false" required v-model="creds.login" class="form-input" type="text" placeholder="login">
             </label>
             <label class="form-label">
                 <p>Password</p>
-                <input required v-model="creds.password" class="form-input" type="password" placeholder="password">
+                <input @input="hasError=false" required v-model="creds.password" class="form-input" type="password" placeholder="password">
             </label>
             <input @click="logInUser()" class="btn" type="button" value="ВПУСТИТЕ МЕНЯ">
             <input @click="$store.dispatch('logOut')" class="btn" type="button" value="ВыПУСТИТЕ МЕНЯ">
@@ -45,8 +44,9 @@
 
 <style scoped>
     .form {
-        height: 50%;
         width: 50%;
+        min-width: 220px;
+        min-height: 280px;
         background-image: url('/adminback.jpeg');
         background-size: cover;
         border-radius: 10px;
@@ -74,12 +74,19 @@
     }
 
     .form-input {
-        width: 100%;
+        width: 95%;
         font-size: 20px;
+        border-radius: 3px;
+        border: 1px solid red;
+        padding: 4px;
     }
 
     .btn {
         display: block;
         margin-top: 20px;
+    }
+
+    .text-danger {
+        color: red;
     }
 </style>

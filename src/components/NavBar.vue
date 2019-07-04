@@ -13,9 +13,10 @@
 <script>
   export default {
     name: "NavBar",
-    data() {
-      return {
-        routes: [
+    computed: {
+      routes() {
+        const color = this.$store.getters.isAuthenticated ? 'red' : 'gray'
+        const routes = [
           {
             icon: 'utensils',
             route: '/tables',
@@ -29,14 +30,10 @@
           {
             icon: 'user',
             route: '/admin',
-            iconColor: 'green'
+            iconColor: color
           }
         ]
-      }
-    },
-    computed: {
-      hotFixRoute() {
-        return this.$route.path !== '/'
+        return routes
       }
     }
   }
