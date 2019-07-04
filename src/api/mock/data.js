@@ -1,3 +1,8 @@
+export const FakeUser = {
+  login: "123",
+  password: '123'
+}
+
 export const FakeTables = {
     '0': [
         {
