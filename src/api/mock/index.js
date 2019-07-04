@@ -1,27 +1,22 @@
 import {FakeTables} from "./data";
 import {FakeUser} from "./data";
-import {moment} from "moment";
+import moment from "moment";
 
 //проверка на то какой день
 export class TablesApi {
   static async getTables(unixTime) {
-    window.alert(moment().unix())
-      if (unixTime=== moment().unix())
-      {
+      if (moment.unix(unixTime).format("MM/DD/YYYY") === moment().format("MM/DD/YYYY")) {
         const result = FakeTables['0']
-        if(result.length !== 12) {
+        if(result.length !== 11) {
             throw "BLEAN CHTO TO NE TAK"
         }
-  
         return result
-        
-       } else
-       {
+
+       } else {
         const result = FakeTables['1']
-        if(result.length !== 12) {
+        if(result.length !== 11) {
             throw "BLEAN CHTO TO NE TAK"
         }
-        
         return result
         
        }
