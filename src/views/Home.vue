@@ -83,7 +83,7 @@ export default {
     },
     computed:{
         toUnix() {
-            return moment(this.today).unix();
+            return moment(this.reservationDate).unix();
         },
         fetchTables() {
             return this.$store.dispatch('fetchTables', this.toUnix)
@@ -99,7 +99,7 @@ export default {
         }
     },
     async created() {
-        this.today = moment().format('YYYY-MM-DD')
+        this.reservationDate = moment().format('YYYY-MM-DD')
         await this.$store.dispatch('fetchTables', this.toUnix)
         this.tablesFetchInterval = window.setInterval(() => this.$store.dispatch('fetchTables', this.toUnix), 5000)
     },

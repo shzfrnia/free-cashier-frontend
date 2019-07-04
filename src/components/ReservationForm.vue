@@ -41,7 +41,7 @@
             time: this.time
         };
         //alert(JSON.stringify(param));
-        console.log(TablesApi.reservationTable(JSON.stringify(param)));
+        window.console.log(TablesApi.reservationTable(JSON.stringify(param)));
         this.$parent.closeWindowDialog();
       }
     }
