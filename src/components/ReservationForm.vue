@@ -4,7 +4,7 @@
         <h1 class="title">Бронирование столика: {{reservationId}}</h1>
         <input placeholder="Имя" type="text" name="Name" id="name" class="textfield">
         <input placeholder="Телефон" type="tel" name="Phone" class="textfield" maxlength="11">
-<!--        <div class="text ">Дата брони<input type="date" name="Booking_date" class="textfield"></div>-->
+        <div class="text ">Дата брони<input type="date" name="Booking_date" class="textfield"></div>
         <!--<div class="text ">
             Время брони<input type="time" name="Booking_time" class="textfield textfield-time">
         </div>-->
