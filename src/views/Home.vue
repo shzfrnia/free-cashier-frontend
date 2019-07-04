@@ -8,7 +8,7 @@
         <div class="booking">
 <!--            <h2>Выберите место</h2>-->
             <div class="booking-map">
-                <h2>Выберите место</h2>
+                <div class="booking-text">Выберите место</div>
                 <div class="date">Выберите дату брони 
                     <input v-model="reservationDate" type="date" id="date"/>
                 </div>
@@ -36,37 +36,37 @@
 
 
                 <!--Столики-->
-                <div @click="openReservationForm(getTables()[0].id)" class = "tbl-figure-m" id = "map-tbl-1">
+                <div @click="openReservationForm(getTables()[0].id)" class = "tbl-figure-m" :class='[getTables()[0].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-1">
                     <div class = "nmbr-places" style="transform: rotate(-90deg);">4</div>
                 </div>
-                <div @click="openReservationForm(getTables()[1].id)" class = "tbl-figure-m" id = "map-tbl-2">
+                <div @click="openReservationForm(getTables()[1].id)" class = "tbl-figure-m" :class='[getTables()[1].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-2">
                     <div class = "nmbr-places" style="transform: rotate(-90deg);">4</div>
                 </div>
-                <div @click="openReservationForm(getTables()[2].id)" class = "tbl-figure-m" id = "map-tbl-3">
+                <div @click="openReservationForm(getTables()[2].id)" class = "tbl-figure-m" :class='[getTables()[2].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-3">
                     <div class = "nmbr-places">4</div>
                 </div>
-                <div @click="openReservationForm(getTables()[3].id)" class = "tbl-figure-s" id = "map-tbl-4">
+                <div @click="openReservationForm(getTables()[3].id)" class = "tbl-figure-s" :class='[getTables()[3].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-4">
                     <div class = "nmbr-places">2</div>
                 </div>
-                <div @click="openReservationForm(getTables()[4].id)" class = "tbl-figure-m" id = "map-tbl-5">
+                <div @click="openReservationForm(getTables()[4].id)" class = "tbl-figure-m" :class='[getTables()[4].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-5">
                     <div class = "nmbr-places">4</div>
                 </div>
-                <div @click="openReservationForm(getTables()[5].id)" class = "tbl-figure-m" id = "map-tbl-6">
+                <div @click="openReservationForm(getTables()[5].id)" class = "tbl-figure-m" :class='[getTables()[5].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-6">
                     <div class = "nmbr-places">4</div>
                 </div>
-                <div @click="openReservationForm(getTables()[6].id)" class = "tbl-figure-s" id = "map-tbl-7">
+                <div @click="openReservationForm(getTables()[6].id)" class = "tbl-figure-s" :class='[getTables()[6].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-7">
                     <div class = "nmbr-places">2</div>
                 </div>
-                <div @click="openReservationForm(getTables()[7].id)" class = "tbl-figure-l" id = "map-tbl-8">
+                <div @click="openReservationForm(getTables()[7].id)" class = "tbl-figure-l" :class='[getTables()[7].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-8">
                     <div class = "nmbr-places">6</div>
                 </div>
-                <div @click="openReservationForm(getTables()[8].id)" class = "tbl-figure-l" id = "map-tbl-9">
+                <div @click="openReservationForm(getTables()[8].id)" class = "tbl-figure-l" :class='[getTables()[8].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-9">
                     <div class = "nmbr-places">6</div>
                 </div>
-                <div @click="openReservationForm(getTables()[9].id)" class = "tbl-figure-xl" id = "map-tbl-10">
+                <div @click="openReservationForm(getTables()[9].id)" class = "tbl-figure-xl" :class='[getTables()[9].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-10">
                     <div class = "nmbr-places">8</div>
                 </div>
-                <div @click="openReservationForm(getTables()[10].id)" class = "tbl-figure-xl" id = "map-tbl-11">
+                <div @click="openReservationForm(getTables()[10].id)" class = "tbl-figure-xl" :class='[getTables()[10].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-11">
                     <div class = "nmbr-places">8</div>
                 </div>
             </div>
@@ -95,6 +95,12 @@ export default {
             reservationDate: ''
         }
     },
+    computed:{
+        toUnix(){
+            const unixtime = moment(this.today).unix()
+            return unixtime;
+        }
+    },
     methods: {
         getTables() {
             return this.$store.state.tables
@@ -110,6 +116,8 @@ export default {
         this.reservationDate = moment().format('YYYY-MM-DD')
         // window.console.log(new Date())
         this.tablesFetchInterval = window.setInterval(() => this.$store.dispatch('fetchTables','0'), 5000)
+
+       // this.tablesFetchInterval = window.setInterval(() => this.$store.dispatch('fetchTables',`${this.toUnix}`), 5000)
     },
     beforeRouteLeave(to, from, next) {
         window.clearInterval(this.tablesFetchInterval)
@@ -122,21 +130,23 @@ export default {
     #date{    
        border-radius: 5px;
        height: 25px;
-       outline: none;}
+       outline: none;
+       font-size:20px;}
     .date{
         margin: auto;
         height: 30px;
         top: 2%;
         right: -55%;
         position: absolute;
+        font-size: 30px;
     }
-    h2 {
+    .booking-text {
         margin: auto;
         height: 30px;
-        width: 200px;
-        top: 14%;
-        right: -15%;
+        top: 34%;
+        right: -43%;
         position: absolute;
+        font-size: 30px;
     }
 
     .booking {
@@ -147,7 +157,7 @@ export default {
         position: absolute;
         right: -34%;
         top: 46%;
-        font-size: 14pt;
+        font-size: 18px;
     }
 
     .legend-list {
@@ -201,35 +211,30 @@ export default {
     }
 
     .tbl-figure-s {
-        background-color: rgb(22, 127, 224);
         width: 44px;
         height: 44px;
         border-radius: 8px;
     }
 
     .tbl-figure-m {
-        background-color: rgb(22, 127, 224);
         width: 80px;
         height: 44px;
         border-radius: 5px;
     }
 
     .tbl-figure-l {
-        background-color: rgb(22, 127, 224);
         width: 122px;
         height: 44px;
         border-radius: 5px;
     }
 
     .tbl-figure-xl {
-        background-color: rgb(22, 127, 224);
         width: 162px;
         height: 44px;
         border-radius: 5px;
     }
 
     #map-tbl-1 {
-        background-color: #EE7575;
         display: block;
         position: absolute;
         top: 35px;
@@ -238,7 +243,6 @@ export default {
     }
 
     #map-tbl-2 {
-        background-color: #86EE75;
         display: block;
         position: absolute;
         top: 35px;
@@ -247,7 +251,6 @@ export default {
     }
 
     #map-tbl-3 {
-        background-color: #86EE75;
         display: block;
         position: absolute;
         top: 180px;
@@ -255,7 +258,6 @@ export default {
     }
 
     #map-tbl-4 {
-        background-color: #86EE75;
         display: block;
         position: absolute;
         top: 156px;
@@ -263,7 +265,6 @@ export default {
     }
 
     #map-tbl-5 {
-        background-color: #86EE75;
         display: block;
         position: absolute;
         top: 180px;
@@ -271,7 +272,6 @@ export default {
     }
 
     #map-tbl-6 {
-        background-color: #86EE75;
         display: block;
         position: absolute;
         top: 296px;
@@ -280,7 +280,6 @@ export default {
 
 
     #map-tbl-7 {
-        background-color: #86EE75;
         display: block;
         position: absolute;
         top: 264px;
@@ -288,15 +287,13 @@ export default {
     }
 
     #map-tbl-8 {
-        background-color: #86EE75;
-        display: block;
+       display: block;
         position: absolute;
         top: 400px;
         left: 14px;
     }
 
     #map-tbl-9 {
-        background-color: #86EE75;
         display: block;
         position: absolute;
         top: 400px;
@@ -304,7 +301,6 @@ export default {
     }
 
     #map-tbl-10 {
-        background-color: #86EE75;
         display: block;
         position: absolute;
         top: 224px;
@@ -312,7 +308,6 @@ export default {
     }
 
     #map-tbl-11 {
-        background-color: #86EE75;
         display: block;
         position: absolute;
         top: 400px;
