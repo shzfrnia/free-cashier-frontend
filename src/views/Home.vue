@@ -5,12 +5,9 @@
         </modal-window>
 
         <div class="booking">
-<!--            <h2>Выберите место</h2>-->
+            <h2>Выберите место</h2>
             <div class="booking-map">
-                <div class="booking-text">Выберите место</div>
-                <div class="date">Выберите дату брони 
-                    <input v-model="reservationDate" type="date" id="date"/>
-                </div>
+
                 <div class="legend">
                     <div class="legend-list"><div class="tbl-icon tbl-free"></div>Свободен</div>
                     <div class="legend-list"><div class="tbl-icon tbl-part-occupied"></div>Частично занят</div>
@@ -111,18 +108,10 @@ export default {
 
 </script>
 <style scoped>
-    #date{    
-       border-radius: 5px;
-       height: 25px;
-       outline: none;
-       font-size:20px;}
-    .date{
-        margin: auto;
+    h2 {
+        margin: 0 auto 24px;
         height: 30px;
-        top: 2%;
-        right: -55%;
-        position: absolute;
-        font-size: 30px;
+        width: 200px;
     }
     .booking-text {
         margin: auto;
@@ -134,14 +123,13 @@ export default {
     }
 
     .booking {
-
     }
 
     .legend {
         position: absolute;
-        right: -34%;
-        top: 46%;
-        font-size: 18px;
+        right: -4%;
+        top: 4%;
+        font-size: 14pt;
     }
 
     .legend-list {
@@ -169,10 +157,11 @@ export default {
     }
 
     .tbl-part-occupied {
-        background-color: #ffff52;
+        background-color: #ffde56;
     }
 
     .booking-map {
+        margin:auto;
         text-align: center;
         position:relative;
         height: 496px;
@@ -182,6 +171,7 @@ export default {
     .booking-map img {
         width: 576px;
         height: 496px;
+        filter: opacity(75%);
     }
 
     .nmbr-places {
@@ -219,6 +209,7 @@ export default {
     }
 
     #map-tbl-1 {
+       /* background-color: #EE7575;*/
         display: block;
         position: absolute;
         top: 35px;
@@ -227,6 +218,7 @@ export default {
     }
 
     #map-tbl-2 {
+       /* background-color: #86EE75;*/
         display: block;
         position: absolute;
         top: 35px;
@@ -235,6 +227,7 @@ export default {
     }
 
     #map-tbl-3 {
+       /* background-color: #86EE75;*/
         display: block;
         position: absolute;
         top: 180px;
@@ -242,6 +235,7 @@ export default {
     }
 
     #map-tbl-4 {
+      /*  background-color: #86EE75;*/
         display: block;
         position: absolute;
         top: 156px;
@@ -249,6 +243,7 @@ export default {
     }
 
     #map-tbl-5 {
+       /* background-color: #86EE75;*/
         display: block;
         position: absolute;
         top: 180px;
@@ -256,6 +251,7 @@ export default {
     }
 
     #map-tbl-6 {
+       /* background-color: #86EE75;*/
         display: block;
         position: absolute;
         top: 296px;
@@ -264,6 +260,7 @@ export default {
 
 
     #map-tbl-7 {
+      /*  background-color: #86EE75;*/
         display: block;
         position: absolute;
         top: 264px;
@@ -271,13 +268,15 @@ export default {
     }
 
     #map-tbl-8 {
-       display: block;
+     /*   background-color: #86EE75;*/
+        display: block;
         position: absolute;
         top: 400px;
         left: 14px;
     }
 
     #map-tbl-9 {
+      /*  background-color: #86EE75;*/
         display: block;
         position: absolute;
         top: 400px;
@@ -285,6 +284,7 @@ export default {
     }
 
     #map-tbl-10 {
+    /*    background-color: #86EE75;*/
         display: block;
         position: absolute;
         top: 224px;
@@ -292,6 +292,7 @@ export default {
     }
 
     #map-tbl-11 {
+      /*  background-color: #86EE75;*/
         display: block;
         position: absolute;
         top: 400px;
