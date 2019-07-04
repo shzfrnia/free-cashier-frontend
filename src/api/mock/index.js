@@ -1,14 +1,30 @@
 import {FakeTables} from "./data";
 import {FakeUser} from "./data";
+import {moment} from "moment";
 
+//проверка на то какой день
 export class TablesApi {
   static async getTables(unixTime) {
-      const result = FakeTables[unixTime]
-      if(result.length !== 12) {
-          throw "BLEAN CHTO TO NE TAK"
-      }
-
-      return result
+    window.alert(moment().unix())
+      if (unixTime=== moment().unix())
+      {
+        const result = FakeTables['0']
+        if(result.length !== 12) {
+            throw "BLEAN CHTO TO NE TAK"
+        }
+  
+        return result
+        
+       } else
+       {
+        const result = FakeTables['1']
+        if(result.length !== 12) {
+            throw "BLEAN CHTO TO NE TAK"
+        }
+        
+        return result
+        
+       }
   }
 }
 

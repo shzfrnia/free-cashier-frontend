@@ -104,6 +104,7 @@ export default {
     methods: {
         getTables() {
             return this.$store.state.tables
+
         },
         openReservationForm(id) {
           this.reservationTableId = id
@@ -113,12 +114,8 @@ export default {
     },
     async created() {
         this.today = moment().format('YYYY-MM-DD')
-      //  await this.$store.dispatch('fetchTables',`${this.toUnix}`)
-                await this.$store.dispatch('fetchTables','0')
-
-        this.tablesFetchInterval = window.setInterval(() => this.$store.dispatch('fetchTables','0'), 5000)
-
-       // this.tablesFetchInterval = window.setInterval(() => this.$store.dispatch('fetchTables',`${this.toUnix}`), 5000)
+       await this.$store.dispatch('fetchTables',`${this.toUnix}`)
+       this.tablesFetchInterval = window.setInterval(() => this.$store.dispatch('fetchTables',`${this.toUnix}`), 5000)
     },
     beforeRouteLeave(to, from, next) {
         window.clearInterval(this.tablesFetchInterval)
