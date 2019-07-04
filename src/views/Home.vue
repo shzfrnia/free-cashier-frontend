@@ -8,7 +8,7 @@
         <div class="booking">
 <!--            <h2>Выберите место</h2>-->
             <div class="booking-map">
-                <h2>Выберите место</h2>
+                <div class="booking-text">Выберите место</div>
                 <div class="date">Выберите дату брони 
                     <input v-model="today" type="date" id="date"/>
                 </div>
@@ -95,6 +95,12 @@ export default {
             today: ''
         }
     },
+    computed:{
+        toUnix(){
+            const unixtime = moment(this.today).unix()
+            return unixtime;
+        }
+    },
     methods: {
         getTables() {
             return this.$store.state.tables
@@ -106,10 +112,9 @@ export default {
 
     },
     async created() {
-        await this.$store.dispatch('fetchTables','0')
         this.today = moment().format('YYYY-MM-DD')
-        // window.console.log(new Date())
-        this.tablesFetchInterval = window.setInterval(() => this.$store.dispatch('fetchTables','0'), 5000)
+        await this.$store.dispatch('fetchTables',`${this.toUnix}`)
+        this.tablesFetchInterval = window.setInterval(() => this.$store.dispatch('fetchTables',`${this.toUnix}`), 5000)
     },
     beforeRouteLeave(to, from, next) {
         window.clearInterval(this.tablesFetchInterval)
@@ -122,21 +127,23 @@ export default {
     #date{    
        border-radius: 5px;
        height: 25px;
-       outline: none;}
+       outline: none;
+       font-size:20px;}
     .date{
         margin: auto;
         height: 30px;
         top: 2%;
         right: -55%;
         position: absolute;
+        font-size: 30px;
     }
-    h2 {
+    .booking-text {
         margin: auto;
         height: 30px;
-        width: 200px;
-        top: 14%;
-        right: -15%;
+        top: 34%;
+        right: -43%;
         position: absolute;
+        font-size: 30px;
     }
 
     .booking {
@@ -147,7 +154,7 @@ export default {
         position: absolute;
         right: -34%;
         top: 46%;
-        font-size: 14pt;
+        font-size: 18px;
     }
 
     .legend-list {
