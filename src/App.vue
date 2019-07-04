@@ -1,17 +1,9 @@
 <template>
   <div :style="{'background-image': `url(${selectedBgColor})`}"  id="app">
-      <transition name="bounce">
-        <modal-window @submit="modal=false" v-if="modal">
-            <reservation-form></reservation-form>
-        </modal-window>
-        <modal-window @submit="mapModal=false" v-if="mapModal">
-            <google-map></google-map>
-        </modal-window>
-      </transition>
       <nav-bar></nav-bar>
       <white-box>
           <transition name="component-fade" mode="out-in">
-              <router-view @spange-bob="modal=true"/>
+              <router-view @spange-bob="open()"/>
           </transition>
       </white-box>
   </div>
@@ -21,9 +13,6 @@
 <script>
   import NavBar from './components/NavBar'
   import WhiteBox from './components/WhiteBox'
-  import ModalWindow from './components/ModalWindow'
-  import ReservationForm from './components/ReservationForm'
-  import GoogleMap from './components/GoogleMap'
 
   export default {
     name: "app",
@@ -32,46 +21,24 @@
     },
     components: {
       NavBar,
-      WhiteBox,
-      ModalWindow,
-      ReservationForm,
-        GoogleMap
-    },
-    data() {
-      return {
-        modal: false,
-        mapModal: true
-      }
+      WhiteBox
     },
     computed: {
       selectedBgColor() {
         return this.$route.meta.bkImgUrl
+      },
+      showWindowDialog () {
+        return this.$store.state.showModalWindow
+      }
+    },
+    methods: {
+      open() {
+        this.$store.state.showModalWindow = true
+        this.$store.state.blockScreen = true
       }
     }
   }
 </script>
-
-<!--BOUNCE ANIMATION-->
-<style scoped>
-    .bounce-enter-active {
-        animation: bounce-in .7s;
-    }
-    .bounce-leave-active {
-        animation: bounce-in .5s reverse;
-    }
-    @keyframes bounce-in {
-        0% {
-            transform: scale(0);
-        }
-        50% {
-            transform: scale(1.20);
-        }
-        100% {
-            transform: scale(1);
-        }
-    }
-
-</style>
 
 <style>
     @import 'assets/fonts/font-awesome.css';
@@ -88,10 +55,8 @@
         text-align: center;
         height: 100vh;
         transition: 0.7s;
-        background-repeat: round;
-        background-size: 100%;
+        background-size: cover;
     }
-
 
     .component-fade-enter-active, .component-fade-leave-active {
         transition: opacity .25s ease;

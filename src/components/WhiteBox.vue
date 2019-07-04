@@ -22,11 +22,11 @@
         border-radius: 10px;
         background: white;
         opacity: 0.92;
+        overflow: auto;
         padding: 20px;
         width: 60%;
         margin: 10px auto;
         height: 80vh;
-        overflow: auto;
         box-shadow: 0 0 10px rgb(255, 255, 255);
     }
 </style>
