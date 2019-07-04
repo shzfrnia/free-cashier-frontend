@@ -1,6 +1,5 @@
 <template>
     <div>
-        <!--<img @click="$emit('spange-bob')" width="10%" height="auto" src="../../public/СПАНЧ.png">-->
         <modal-window v-if="showReservationForm" @submit="showReservationForm=false">
             <reservation-form :reservation-id="reservationTableId"></reservation-form>
         </modal-window>
@@ -20,54 +19,41 @@
                 <!--Карта-->
                 <img src="../../public/map.svg">
 
-<!--            BETA-->
-<!--                <div-->
-<!--                        style="display: inline-block;"-->
-<!--                        :key="table.id"-->
-<!--                        v-for="table in getTables()"-->
-<!--                        class = "tbl-figure-m"-->
-<!--                        @click="openReservationForm(table.id)"-->
-<!--                >-->
-<!--                    <div>{{table.size}}</div>-->
-<!--                </div>-->
-
-
-
-
-
                 <!--Столики-->
-                <div @click="openReservationForm(getTables()[0].id)" class = "tbl-figure-m" :class='[getTables()[0].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-1">
-                    <div class = "nmbr-places" style="transform: rotate(-90deg);">4</div>
-                </div>
-                <div @click="openReservationForm(getTables()[1].id)" class = "tbl-figure-m" :class='[getTables()[1].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-2">
-                    <div class = "nmbr-places" style="transform: rotate(-90deg);">4</div>
-                </div>
-                <div @click="openReservationForm(getTables()[2].id)" class = "tbl-figure-m" :class='[getTables()[2].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-3">
-                    <div class = "nmbr-places">4</div>
-                </div>
-                <div @click="openReservationForm(getTables()[3].id)" class = "tbl-figure-s" :class='[getTables()[3].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-4">
-                    <div class = "nmbr-places">2</div>
-                </div>
-                <div @click="openReservationForm(getTables()[4].id)" class = "tbl-figure-m" :class='[getTables()[4].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-5">
-                    <div class = "nmbr-places">4</div>
-                </div>
-                <div @click="openReservationForm(getTables()[5].id)" class = "tbl-figure-m" :class='[getTables()[5].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-6">
-                    <div class = "nmbr-places">4</div>
-                </div>
-                <div @click="openReservationForm(getTables()[6].id)" class = "tbl-figure-s" :class='[getTables()[6].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-7">
-                    <div class = "nmbr-places">2</div>
-                </div>
-                <div @click="openReservationForm(getTables()[7].id)" class = "tbl-figure-l" :class='[getTables()[7].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-8">
-                    <div class = "nmbr-places">6</div>
-                </div>
-                <div @click="openReservationForm(getTables()[8].id)" class = "tbl-figure-l" :class='[getTables()[8].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-9">
-                    <div class = "nmbr-places">6</div>
-                </div>
-                <div @click="openReservationForm(getTables()[9].id)" class = "tbl-figure-xl" :class='[getTables()[9].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-10">
-                    <div class = "nmbr-places">8</div>
-                </div>
-                <div @click="openReservationForm(getTables()[10].id)" class = "tbl-figure-xl" :class='[getTables()[10].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-11">
-                    <div class = "nmbr-places">8</div>
+                <div v-if="getTables().length > 0">
+                    <div @click="openReservationForm(getTables()[0].id)" class = "tbl-figure-m" :class='[getTables()[0].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-1">
+                        <div class = "nmbr-places" style="transform: rotate(-90deg);">4</div>
+                    </div>
+                    <div @click="openReservationForm(getTables()[1].id)" class = "tbl-figure-m" :class='[getTables()[1].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-2">
+                        <div class = "nmbr-places" style="transform: rotate(-90deg);">4</div>
+                    </div>
+                    <div @click="openReservationForm(getTables()[2].id)" class = "tbl-figure-m" :class='[getTables()[2].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-3">
+                        <div class = "nmbr-places">4</div>
+                    </div>
+                    <div @click="openReservationForm(getTables()[3].id)" class = "tbl-figure-s" :class='[getTables()[3].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-4">
+                        <div class = "nmbr-places">2</div>
+                    </div>
+                    <div @click="openReservationForm(getTables()[4].id)" class = "tbl-figure-m" :class='[getTables()[4].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-5">
+                        <div class = "nmbr-places">4</div>
+                    </div>
+                    <div @click="openReservationForm(getTables()[5].id)" class = "tbl-figure-m" :class='[getTables()[5].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-6">
+                        <div class = "nmbr-places">4</div>
+                    </div>
+                    <div @click="openReservationForm(getTables()[6].id)" class = "tbl-figure-s" :class='[getTables()[6].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-7">
+                        <div class = "nmbr-places">2</div>
+                    </div>
+                    <div @click="openReservationForm(getTables()[7].id)" class = "tbl-figure-l" :class='[getTables()[7].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-8">
+                        <div class = "nmbr-places">6</div>
+                    </div>
+                    <div @click="openReservationForm(getTables()[8].id)" class = "tbl-figure-l" :class='[getTables()[8].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-9">
+                        <div class = "nmbr-places">6</div>
+                    </div>
+                    <div @click="openReservationForm(getTables()[9].id)" class = "tbl-figure-xl" :class='[getTables()[9].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-10">
+                        <div class = "nmbr-places">8</div>
+                    </div>
+                    <div @click="openReservationForm(getTables()[10].id)" class = "tbl-figure-xl" :class='[getTables()[10].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-11">
+                        <div class = "nmbr-places">8</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -96,26 +82,26 @@ export default {
         }
     },
     computed:{
-        toUnix(){
-            const unixtime = moment(this.today).unix()
-            return unixtime;
+        toUnix() {
+            return moment(this.today).unix();
+        },
+        fetchTables() {
+            return this.$store.dispatch('fetchTables', this.toUnix)
         }
     },
     methods: {
         getTables() {
             return this.$store.state.tables
-
         },
         openReservationForm(id) {
           this.reservationTableId = id
           this.showReservationForm = true
-        },
-
+        }
     },
     async created() {
         this.today = moment().format('YYYY-MM-DD')
-       await this.$store.dispatch('fetchTables',`${this.toUnix}`)
-       this.tablesFetchInterval = window.setInterval(() => this.$store.dispatch('fetchTables',`${this.toUnix}`), 5000)
+        await this.$store.dispatch('fetchTables', this.toUnix)
+        this.tablesFetchInterval = window.setInterval(() => this.$store.dispatch('fetchTables', this.toUnix), 5000)
     },
     beforeRouteLeave(to, from, next) {
         window.clearInterval(this.tablesFetchInterval)
