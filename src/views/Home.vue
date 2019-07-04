@@ -9,7 +9,7 @@
 <!--            <h2>Выберите место</h2>-->
             <div class="booking-map">
                 <h2>Выберите место</h2>
-                <div class="date" @click="getDate">Выберите дату брони 
+                <div class="date">Выберите дату брони 
                     <input v-model="today" type="date" id="date"/>
                 </div>
                 <div class="legend">
@@ -103,10 +103,7 @@ export default {
           this.reservationTableId = id
           this.showReservationForm = true
         },
-        getDate(){
-            // var today = moment().format('YYYY-MM-DD');
-            // document.getElementById("date").value = today;
-        }
+
     },
     async created() {
         await this.$store.dispatch('fetchTables','0')
