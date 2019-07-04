@@ -3,7 +3,10 @@
         <modal-window v-if="showReservationForm" @submit="showReservationForm=false">
             <reservation-form :reservation-date="reservationDate" :reservation-id="reservationTableId"></reservation-form>
         </modal-window>
-
+        <div class="booking-text">Выберите место</div>
+        <div class="date">Выберите дату брони
+            <input v-model="reservationDate" type="date" id="date"/>
+        </div>
         <div class="booking">
             <h2>Выберите место</h2>
             <div class="booking-map">
