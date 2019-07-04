@@ -6,7 +6,7 @@
                     <slot></slot>
                     <div v-if="closeButton" class="button-group">
                         <button @click="closeWindowDialog" class="btn">
-                            Закрыть
+                            CLOSE ME
                         </button>
                     </div>
                 </div>
@@ -91,20 +91,12 @@
 <style scoped>
     .button-group {
         display: flex;
-        position: absolute;
-        top: 0;
-        right: 0;
     }
 
     .button-group .btn {
-        background: transparent;
-        font-size: 14pt;
-        border: none;
-        margin: 8px;
-        padding: 4px;
+        margin: 0px;
+        width: 100px;
     }
-
-    .btn:focus, .btn:active {outline:none;}
 
     .wrap {
         margin: 4% auto;
@@ -115,7 +107,7 @@
     }
 
     .content {
-        padding: 28px 8px;
+        padding: 10px;
     }
 
     .license-viewer {
