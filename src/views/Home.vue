@@ -2,7 +2,7 @@
     <div>
         <!--<img @click="$emit('spange-bob')" width="10%" height="auto" src="../../public/СПАНЧ.png">-->
         <modal-window v-if="showReservationForm" @submit="showReservationForm=false">
-            <reservation-form :reservation-id="reservationTableId"></reservation-form>
+            <reservation-form :reservation-date="reservationDate" :reservation-id="reservationTableId"></reservation-form>
         </modal-window>
 
         <div class="booking">
@@ -10,7 +10,7 @@
             <div class="booking-map">
                 <h2>Выберите место</h2>
                 <div class="date">Выберите дату брони 
-                    <input v-model="today" type="date" id="date"/>
+                    <input v-model="reservationDate" type="date" id="date"/>
                 </div>
                 <div class="legend">
                     <div class="legend-list"><div class="tbl-icon tbl-free"></div>Свободен</div>
@@ -92,7 +92,7 @@ export default {
             tablesFetchInterval: null,
             tables: this.$store.state.tables,
             reservationTableId: null,
-            today: ''
+            reservationDate: ''
         }
     },
     methods: {
@@ -107,7 +107,7 @@ export default {
     },
     async created() {
         await this.$store.dispatch('fetchTables','0')
-        this.today = moment().format('YYYY-MM-DD')
+        this.reservationDate = moment().format('YYYY-MM-DD')
         // window.console.log(new Date())
         this.tablesFetchInterval = window.setInterval(() => this.$store.dispatch('fetchTables','0'), 5000)
     },
