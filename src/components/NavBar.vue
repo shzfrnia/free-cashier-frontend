@@ -3,7 +3,7 @@
         <div class="my-btn-container">
             <router-link :key="route.icon" :to="route.route" v-for="route in routes">
                 <div class="my-btn" :key="route.icon">
-                    <i :style="{color: route.bkColor}" :class="['fas', `fa-${route.icon}`]"></i>
+                    <i :style="{color: route.iconColor}" :class="['fas', `fa-${route.icon}`]"></i>
                 </div>
             </router-link>
         </div>
@@ -13,25 +13,27 @@
 <script>
   export default {
     name: "NavBar",
-    data() {
-      return {
-        routes: [
+    computed: {
+      routes() {
+        const color = this.$store.getters.isAuthenticated ? 'red' : 'gray'
+        const routes = [
           {
             icon: 'utensils',
             route: '/tables',
-            bkColor: 'rgb(203, 128, 56)'
+            iconColor: 'rgb(203, 128, 56)'
           },
           {
             icon: 'address-card',
             route: '/about',
-            bkColor : 'rgb(108, 114, 208)'
+            iconColor: 'rgb(108, 114, 208)'
+          },
+          {
+            icon: 'user',
+            route: '/admin',
+            iconColor: color
           }
         ]
-      }
-    },
-    computed: {
-      hotFixRoute() {
-        return this.$route.path !== '/'
+        return routes
       }
     }
   }

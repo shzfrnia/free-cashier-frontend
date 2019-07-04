@@ -28,6 +28,15 @@ export default new Router({
         bkColor: "rgb(203, 128, 56)",
         bkImgUrl: "About.jpg"
       }
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: () => import('./views/AdminPanel.vue'),
+      meta: {
+        bkImgUrl: "adminback.jpeg",
+        bkColor: 'red'
+      }
     }
   ]
 })

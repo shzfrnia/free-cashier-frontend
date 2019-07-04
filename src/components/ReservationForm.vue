@@ -1,26 +1,48 @@
 <template>
     <form>
         <h1>You trying reservation table : {{reservationId}}</h1>
-        <div class="text "> Имя <input type="text" name="Name" class="text"></div><br/>
-        <div class="text ">Контактный номер <input type="tel" name="Phone" class="text" maxlength="11"></div><br/>
-        <div class="text ">Время брони <input type="time" name="Booking_time" class="text"></div><br/>
+        <div class="text "> Имя <input type="text" name="Name" class="text" v-model="name"></div><br/>
+        <div class="text ">Контактный номер <input type="tel" name="Phone" class="text" maxlength="11" v-model="phone"></div><br/>
+        <div class="text ">Время брони <input type="time" name="Booking_time" class="text" v-model="time"></div><br/>
         <div class="text red">Стол свободен до @TIME-30мин</div><br/>
         <input @click="submitForm" type="button" value="Забронировать" name="submit" id="submit" class="text">
     </form>
 </template>
 
 <script>
+    import {TablesApi} from '../api/server/index' //'api-client'
+
   export default {
     name: "ReservationForm",
     props: {
       reservationId: {
         type: Number,
         required: true
+      },
+      reservationDate: {
+          type: String,
+          required: true
       }
+    },
+    data(){
+        return {
+            name: "",
+            phone: "",
+            time: ""
+        }
     },
     methods: {
       submitForm() {
-        this.$parent.closeWindowDialog()
+        let param = {
+            id: this.reservationId,
+            name: this.name,
+            phone: this.phone,
+            date: this.reservationDate,
+            time: this.time
+        };
+        //alert(JSON.stringify(param));
+        window.console.log(TablesApi.reservationTable(JSON.stringify(param)));
+        this.$parent.closeWindowDialog();
       }
     }
   }
@@ -39,6 +61,7 @@
         width: 240px;
         border-radius: 10px;
         height: 60px;
+        outline: none;
     }
 
     .text {

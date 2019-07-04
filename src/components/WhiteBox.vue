@@ -29,4 +29,8 @@
         height: 80vh;
         box-shadow: 0 0 10px rgb(255, 255, 255);
     }
+
+    .content {
+        height: 100%;
+    }
 </style>

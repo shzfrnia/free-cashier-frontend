@@ -26,9 +26,6 @@
     computed: {
       selectedBgColor() {
         return this.$route.meta.bkImgUrl
-      },
-      showWindowDialog () {
-        return this.$store.state.showModalWindow
       }
     },
     methods: {
