@@ -6,10 +6,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    tables: [],
-    blockScreen: false,
-    showModalWindow: false,
-    modalWindowName: 'google-map'
+    tables: []
   },
   mutations: {
     setTables(state, tables) {
