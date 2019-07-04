@@ -2,7 +2,7 @@
     <div>
         <ModalWindow
                 v-if="showMap"
-                :width-size="35"
+                :width-size="54"
                 @submit="showMap=false"
                 :close-button="true"
         >

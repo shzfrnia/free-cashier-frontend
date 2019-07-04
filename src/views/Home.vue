@@ -6,8 +6,9 @@
         </modal-window>
 
         <div class="booking">
-            <h2>Выберите место</h2>
+<!--            <h2>Выберите место</h2>-->
             <div class="booking-map">
+                <h2>Выберите место</h2>
                 <div class="legend">
                     <div class="legend-list"><div class="tbl-icon tbl-free"></div>Свободен</div>
                     <div class="legend-list"><div class="tbl-icon tbl-part-occupied"></div>Частично занят</div>
@@ -33,35 +34,36 @@
 
                 <!--Столики-->
                 <div @click="openReservationForm(getTables()[0].id)" class = "tbl-figure-m" id = "map-tbl-1">
-                    <div class = "nmbr-places" style="transform: rotate(-90deg);;">4</div>
-                </div>
-                <div @click="openReservationForm(getTables()[7].id)" class = "tbl-figure-m" id = "map-tbl-2">
                     <div class = "nmbr-places" style="transform: rotate(-90deg);">4</div>
                 </div>
-                <div @click="" class = "tbl-figure-m" id = "map-tbl-3">
+                <div @click="openReservationForm(getTables()[1].id)" class = "tbl-figure-m" id = "map-tbl-2">
+                    <div class = "nmbr-places" style="transform: rotate(-90deg);">4</div>
+                </div>
+                <div @click="openReservationForm(getTables()[2].id)" class = "tbl-figure-m" id = "map-tbl-3">
                     <div class = "nmbr-places">4</div>
                 </div>
-                <div @click="" class = "tbl-figure-s" id = "map-tbl-4">
+                <div @click="openReservationForm(getTables()[3].id)" class = "tbl-figure-s" id = "map-tbl-4">
                     <div class = "nmbr-places">2</div>
                 </div>
-                <div @click="" class = "tbl-figure-m" id = "map-tbl-5">
-                    <div class = "nmbr-places">4</div></div>
-                <div @click="" class = "tbl-figure-m" id = "map-tbl-6">
+                <div @click="openReservationForm(getTables()[4].id)" class = "tbl-figure-m" id = "map-tbl-5">
                     <div class = "nmbr-places">4</div>
                 </div>
-                <div @click="" class = "tbl-figure-s" id = "map-tbl-7">
+                <div @click="openReservationForm(getTables()[5].id)" class = "tbl-figure-m" id = "map-tbl-6">
+                    <div class = "nmbr-places">4</div>
+                </div>
+                <div @click="openReservationForm(getTables()[6].id)" class = "tbl-figure-s" id = "map-tbl-7">
                     <div class = "nmbr-places">2</div>
                 </div>
-                <div @click="" class = "tbl-figure-l" id = "map-tbl-8">
+                <div @click="openReservationForm(getTables()[7].id)" class = "tbl-figure-l" id = "map-tbl-8">
                     <div class = "nmbr-places">6</div>
                 </div>
-                <div @click="" class = "tbl-figure-l" id = "map-tbl-9">
+                <div @click="openReservationForm(getTables()[8].id)" class = "tbl-figure-l" id = "map-tbl-9">
                     <div class = "nmbr-places">6</div>
                 </div>
-                <div @click="" class = "tbl-figure-xl" id = "map-tbl-10">
+                <div @click="openReservationForm(getTables()[9].id)" class = "tbl-figure-xl" id = "map-tbl-10">
                     <div class = "nmbr-places">8</div>
                 </div>
-                <div @click="" class = "tbl-figure-xl" id = "map-tbl-11">
+                <div @click="openReservationForm(getTables()[10].id)" class = "tbl-figure-xl" id = "map-tbl-11">
                     <div class = "nmbr-places">8</div>
                 </div>
             </div>
@@ -113,8 +115,8 @@ export default {
         margin: auto;
         height: 30px;
         width: 200px;
-        top: 25%;
-        right: 29%;
+        top: 14%;
+        right: -15%;
         position: absolute;
     }
 
@@ -246,7 +248,7 @@ export default {
         display: block;
         position: absolute;
         top: 180px;
-        left: 258px;
+        left: 257px;
     }
 
     #map-tbl-6 {
@@ -279,7 +281,7 @@ export default {
         display: block;
         position: absolute;
         top: 400px;
-        left: 214px;
+        left: 215px;
     }
 
     #map-tbl-10 {
