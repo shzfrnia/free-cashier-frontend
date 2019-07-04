@@ -271,7 +271,7 @@ export default {
     }
 
     #map-tbl-8 {
-       display: block;
+        display: block;
         position: absolute;
         top: 400px;
         left: 14px;
