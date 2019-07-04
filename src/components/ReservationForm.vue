@@ -39,6 +39,7 @@
         width: 240px;
         border-radius: 10px;
         height: 60px;
+        outline: none;
     }
 
     .text {
