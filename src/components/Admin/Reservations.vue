@@ -163,9 +163,11 @@
         outline: none;
         border: solid 1px gray;
         font-size:20px;
-        width: 180px;
+        width: 200px;
     }
     .date{
+        padding-right: 10px;
+        text-align: right;
         height: 50px;
         font-size: 30px;
     }
