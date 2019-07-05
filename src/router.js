@@ -9,7 +9,7 @@ const redirectIfAuthenticated = (to, from, next) => {
     next()
     return
   }
-  next('/admin/admin-reservation')
+  next('/admin')
 }
 
 const redirectIfNotAuthenticated = (to, from, next) => {
