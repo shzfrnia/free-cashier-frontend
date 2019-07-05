@@ -72,7 +72,7 @@
         width: 100%;
         display: flex;
         margin: -20px;
-        background: red;
+        background: white;
     }
 
     .selected {
