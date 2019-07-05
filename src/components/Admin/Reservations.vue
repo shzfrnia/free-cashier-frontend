@@ -35,7 +35,7 @@
                 {{r.time | prettyDate}}
             </div>
             <div class="delete-field item">
-                <button class="delete-btn"><i class="fas fa-trash" aria-hidden="true"></i></button>
+                <button class="delete-btn"><i class="fas fa-trash"></i></button>
             </div>
         </div>
     </div>
@@ -148,8 +148,16 @@
         transition: .11s;
     }
 
+    .delete-btn:hover {
+        /*background: red;*/
+        color: red;
+        /*text-shadow: 0 0 1px black;*/
+        /*font-shadow: 0 0 4px black;*/
+    }
+
     .delete-btn:active {
         background: red;
+        color: white;
     }
 
     #date{
