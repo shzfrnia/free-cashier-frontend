@@ -47,7 +47,6 @@
     },
     methods: {
       getReservations() {
-        window.console.log(this.$store.state.reservations)
         return this.$store.state.reservations
       }
     },

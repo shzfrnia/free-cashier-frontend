@@ -129,7 +129,7 @@ export default {
        outline: none;
        font-size:20px;
     }
-    .date{
+    .date {
         margin: auto;
         height: 30px;
         top: 3%;
@@ -137,6 +137,12 @@ export default {
         position: absolute;
         font-size: 30px;
     }
+
+    .date input {
+        width: 215px;
+        text-align: left;
+    }
+
     .booking-text {
         margin: auto;
         height: 30px;
