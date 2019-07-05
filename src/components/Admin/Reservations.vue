@@ -59,8 +59,8 @@
       }
     },
     watch: {
-      reservationDate: function () {
-        this.$store.dispatch('fetchReservations', this.toUnix)
+      reservationDate: async function () {
+        await this.$store.dispatch('fetchReservations', this.toUnix)
       }
     },
     methods: {
