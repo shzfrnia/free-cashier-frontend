@@ -91,7 +91,7 @@
         position: relative;
     }
 
-    .selected {
+    .router-link-exact-active {
         background: #CC8602;
     }
 
