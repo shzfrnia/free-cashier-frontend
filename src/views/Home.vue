@@ -176,11 +176,11 @@ export default {
     }
 
     .tbl-occupied {
-        background-color: #EE7575;
+        background-color: #fd5e53;
     }
 
     .tbl-part-occupied {
-        background-color: #ffff52;
+        background-color: #ffc261;
     }
 
     .booking-map {

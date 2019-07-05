@@ -5,7 +5,7 @@
 <!--        <div class="text "> Имя <input type="text" name="Name" class="text" v-model="name"></div><br/>-->
 <!--        <div class="text ">Контактный номер <input type="tel" name="Phone" class="text" maxlength="11" v-model="phone"></div><br/>-->
 <!--        <div class="text ">Время брони <input type="time" name="Booking_time" class="text" v-model="time"></div><br/>-->
-        <input placeholder="Имя" type="text" name="Name" id="name" class="textfield" v-model="name">
+        <input placeholder="Имя" type="text" name="Name" id="name" class="textfield" maxlength="30" v-model="name">
         <input placeholder="Телефон" type="tel" name="Phone" class="textfield" maxlength="11" v-model="phone">
         <div class="text ">Время брони
             <select name="Booking_time" class="textfield textfield-time" v-model="time">
