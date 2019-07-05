@@ -1,6 +1,5 @@
 <template>
     <form>
-        <input type="button" value="Закрыть" name="close-tab" id="close-btn">
         <h1>Бронирование столика: {{reservationId}}</h1>
 <!--        <div class="text "> Имя <input type="text" name="Name" class="text" v-model="name"></div><br/>-->
 <!--        <div class="text ">Контактный номер <input type="tel" name="Phone" class="text" maxlength="11" v-model="phone"></div><br/>-->

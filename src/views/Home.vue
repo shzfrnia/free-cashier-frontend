@@ -7,7 +7,7 @@
         <div class="booking">
 <!--            <h2>Выберите место</h2>-->
             <div class="booking-map">
-                <div class="booking-text">Выберите место</div>
+                <div class="booking-text">Стол</div>
                 <div class="date">Выберите дату брони 
                     <input v-model="reservationDate" type="date" id="date" class="textfield"/>
                 </div>
@@ -114,7 +114,7 @@ export default {
     .textfield {
         display: block;
         font-size: 25px;
-        width: 320px;
+        width: 164px;
         border: solid 1px gray;
         border-radius: 4px;
         outline: none;
@@ -130,18 +130,18 @@ export default {
     .date{
         margin: auto;
         height: 30px;
-        top: 2%;
-        right: -55%;
+        top: 3%;
+        right: -25%;
         position: absolute;
         font-size: 30px;
     }
     .booking-text {
         margin: auto;
         height: 30px;
-        top: 34%;
-        right: -43%;
+        top: 38%;
+        right: -23%;
         position: absolute;
-        font-size: 30px;
+        font-size: 25px;
     }
 
     .booking {
@@ -172,7 +172,7 @@ export default {
     }
 
     .tbl-free {
-        background-color: #86EE75;
+        background-color: #68f768;
     }
 
     .tbl-occupied {
