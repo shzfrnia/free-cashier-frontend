@@ -36,22 +36,17 @@
     methods: {
       submitForm() {
         const stringDate = this.reservationDate + '-' + this.time;
-        alert(stringDate);
-
-          // const moment = require('moment');
-          // moment.locale("ru");
-          // const date = moment(stringDate, 'DD-MMMM-YYYY-hh:mm').unix();
-          //
-          // console.log(date);
+        //const moment = require('moment');
+        //moment.locale("ru");
+        const date = moment(stringDate, 'DD-MMMM-YYYY-hh:mm').unix();
 
         let param = {
             id: this.reservationId,
             name: this.name,
             phone: this.phone,
-            date: this.reservationDate,
-            time: this.time
+            date: date
         };
-        //alert(JSON.stringify(param));
+        alert(JSON.stringify(param));
         window.console.log(TablesApi.reservationTable(JSON.stringify(param)));
         this.$parent.closeWindowDialog();
       }
