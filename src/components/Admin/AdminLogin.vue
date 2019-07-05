@@ -11,7 +11,6 @@
                 <input @input="hasError=false" required v-model="creds.password" class="form-input" type="password" placeholder="password">
             </label>
             <input @click="logInUser()" class="btn" type="button" value="ВПУСТИТЕ МЕНЯ">
-            <input @click="$store.dispatch('logOut')" class="btn" type="button" value="ВыПУСТИТЕ МЕНЯ">
         </div>
     </div>
 </template>
