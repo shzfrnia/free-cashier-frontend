@@ -8,7 +8,7 @@
                     @click="selectedTab = i.componentName"
                     :class="{ selected: i.componentName === selectedTab }"
             >{{i.displayName}}</div>
-            <div class="nav-item" @click="$store.dispatch('logOut')">LogOut</div>
+            <div id="logout-btn" class="nav-item" @click="$store.dispatch('logOut')">LogOut</div>
         </div>
         <div class="content">
             <component :is="selectedTab"></component>
@@ -51,6 +51,14 @@
 </script>
 
 <style scoped>
+    #logout-btn {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding-bottom: 10px;
+    }
+
+
     .main {
         display: flex;
         width: 100%;
@@ -61,6 +69,7 @@
         min-width: 270px;
         background: #c1c1c1;
         margin: -20px;
+        position: relative;
     }
 
     .nav-item {
@@ -79,6 +88,7 @@
         display: flex;
         margin: -20px;
         background: white;
+        position: relative;
     }
 
     .selected {
