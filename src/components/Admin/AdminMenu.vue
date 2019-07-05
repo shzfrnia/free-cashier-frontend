@@ -21,7 +21,7 @@
     import ReservationFormAdmin from './ReservationFormAdmin'
 
   export default {
-    name: "temp",
+    name: "AdminMenu",
     components: {
       Reservations,
       ReservationFormAdmin
