@@ -121,17 +121,17 @@ export default {
        height: 30px;
        outline: none;
        font-size:20px;
-       width: 180px;
+       width: 200px;
        text-align: left;
     }
     .date {
         margin: auto;
-        height: 30px;
         top: 3%;
         right: -25%;
         position: absolute;
         font-size: 30px;
     }
+
 
     .booking-text {
         margin: auto;
