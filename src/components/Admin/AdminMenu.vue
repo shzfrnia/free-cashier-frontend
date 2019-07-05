@@ -47,7 +47,12 @@
             path: '/admin/tables'
           }
         ],
-        selectedTab: 'reservation-form-admin'
+      }
+    },
+    methods: {
+      async logOut() {
+        await this.$store.dispatch('logOut')
+        this.$router.push('/admin/login')
       }
     }
   }
@@ -79,6 +84,9 @@
         text-align:left;
         padding: 10px 10px 0 10px;
         font-size: 20px;
+        display: block;
+        text-decoration: none;
+        color: black;
     }
 
 
