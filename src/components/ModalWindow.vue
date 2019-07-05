@@ -4,8 +4,8 @@
             <div v-if="showModal" class="wrap" :style="{'width': widthSize + '%'}">
                 <div class="content">
                     <slot></slot>
-                    <div v-if="closeButton" class="button-group">
-                        <button @click="closeWindowDialog" class="btn">
+                    <div  class="button-group">
+                        <button v-if="closeButton" @click="closeWindowDialog" class="btn">
                             Закрыть
                         </button>
                     </div>
@@ -26,7 +26,7 @@
       },
       closeButton: {
         type: Boolean,
-        default: true
+        default: false
       }
     },
     data() {
