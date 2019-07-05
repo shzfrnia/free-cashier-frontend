@@ -132,7 +132,6 @@
 
     .item {
         display: flex;
-        /*border-right: 1px solid black;*/
         justify-content: center;
         align-items: center;
     }

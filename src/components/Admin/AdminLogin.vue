@@ -66,6 +66,11 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        transition: .4s;
+    }
+
+    .form:hover {
+        box-shadow: 0 0 5px red;
     }
 
     .form-group {
@@ -100,6 +105,16 @@
         font-size: 15px;
         width: 130px;
         background: #e69393;
+        border: none;
+        transition: .1s;
+    }
+
+    .btn:hover {
+        box-shadow: 0 0 3px black;
+    }
+
+    .btn:active {
+        background: white;
     }
 
     .text-danger {
