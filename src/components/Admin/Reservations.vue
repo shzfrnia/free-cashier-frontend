@@ -149,10 +149,7 @@
     }
 
     .delete-btn:hover {
-        /*background: red;*/
         color: red;
-        /*text-shadow: 0 0 1px black;*/
-        /*font-shadow: 0 0 4px black;*/
     }
 
     .delete-btn:active {

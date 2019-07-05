@@ -20,10 +20,12 @@
 </template>
 
 <script>
+    import moment from 'moment'
   export default {
     name: "Tables",
     methods: {
         getTables() {
+          this.$store.dispatch('fetchTables', moment().unix())
           return this.$store.state.tables
         }
     },
