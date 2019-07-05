@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {TablesApi, AuthAPI} from 'api-client'
+import {TablesApi, AuthAPI, ReservationAPi} from 'api-client'
 
 Vue.use(Vuex)
 
@@ -11,7 +11,8 @@ export default new Vuex.Store({
       login: localStorage.getItem('login') || 'NoName',
       token: localStorage.getItem('token') || ''
     },
-    tables: []
+    tables: [],
+    reservations: []
   },
   mutations: {
     setTables(state, tables) {
@@ -27,6 +28,9 @@ export default new Vuex.Store({
       state.session.login = ''
       localStorage.removeItem('token')
       localStorage.removeItem('login')
+    },
+    setReservations(state, reservations) {
+      state.reservations = reservations
     }
   },
   getters: {
@@ -50,6 +54,14 @@ export default new Vuex.Store({
     logOut({commit}) {
       AuthAPI.logOut()
       commit('clearSession')
+    },
+    async fetchReservations({commit}, unixTime) {
+      try {
+        const reservations = await ReservationAPi.getReservations(unixTime)
+        commit('setReservations', reservations)
+      } catch (e) {
+        window.console.log(e)
+      }
     }
     }
 })
