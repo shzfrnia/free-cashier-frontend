@@ -41,7 +41,8 @@
 
 <style scoped>
     #legend:hover {
-        background: #c2c0dc;
+        background: none;
+        box-shadow: none;
     }
 
     .containter {
@@ -52,16 +53,15 @@
     .row {
         display: flex;
         position: relative;
-        margin: 1px;
-        /*border-radius: 10px;*/
-        border: 1px solid black;
-        background: #c2c0dc;
+        margin: 10px;
         height: 50px;
         transition: .2s;
+        border-bottom: 1px solid black;
     }
 
     .row:hover {
-        background:  #d8aeba;
+        /*background:  #d8aeba;*/
+        box-shadow: 0 0 10px black;
     }
 
     .row :last-child {
@@ -70,10 +70,11 @@
 
     .item {
         display: flex;
-        border-right: 1px solid black;
+        /*border-right: 1px solid black;*/
         justify-content: center;
         align-items: center;
     }
+
 
     .table-id {
         min-width: 50px;

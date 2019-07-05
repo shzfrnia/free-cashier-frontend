@@ -95,7 +95,7 @@
     }
 
     .router-link-exact-active {
-        background: #CC8602;
+        background: #8199a5;
     }
 
 </style>
