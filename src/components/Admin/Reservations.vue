@@ -7,6 +7,7 @@
                     :reservation-time="reservationTime"
                     :reservation-phone="reservationPhone"></edit-reservation-form>
         </modal-window>
+
         <div class="date">
             <input v-model="reservationDate" type="date" id="date"/>
         </div>
@@ -55,6 +56,11 @@
         reservationDate: '',
         ReservationFetchInterval: null,
           showEditTime: false
+      }
+    },
+    watch: {
+      reservationDate: function () {
+        this.$store.dispatch('fetchReservations', this.toUnix)
       }
     },
     methods: {
