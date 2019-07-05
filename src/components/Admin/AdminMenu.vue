@@ -21,7 +21,7 @@
     import ReservationFormAdmin from './ReservationFormAdmin'
 
   export default {
-    name: "temp",
+    name: "AdminMenu",
     components: {
       Reservations,
       ReservationFormAdmin
@@ -72,7 +72,8 @@
         width: 100%;
         display: flex;
         margin: -20px;
-        background: red;
+        background:white;
+
     }
 
     .selected {
