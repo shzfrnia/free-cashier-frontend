@@ -64,7 +64,7 @@ export default new Router({
           component: () => import('./components/Admin/AdminLogin'),
           meta: {
             bkImgUrl: "/adminback.jpeg",
-            bkColor: 'red'
+            bkColor: '#ad2e3c'
           },
           beforeEnter: redirectIfAuthenticated
         },
@@ -73,7 +73,7 @@ export default new Router({
           component: () => import('./components/Admin/AdminMenu.vue'),
           meta: {
             bkImgUrl: "/adminback.jpeg",
-            bkColor: 'red'
+            bkColor: '#ad2e3c'
           },
           children: [
             {
@@ -82,7 +82,7 @@ export default new Router({
               component: () => import('./components/Admin/ReservationFormAdmin.vue'),
               meta: {
                 bkImgUrl: "/adminback.jpeg",
-                bkColor: 'red'
+                bkColor: '#ad2e3c'
               }
             },
             {
@@ -90,7 +90,7 @@ export default new Router({
               component: () => import('./components/Admin/Reservations.vue'),
               meta: {
                 bkImgUrl: "/adminback.jpeg",
-                bkColor: 'red'
+                bkColor: '#ad2e3c'
               }
             },
             {
@@ -98,7 +98,7 @@ export default new Router({
               component: () => import('./components/Admin/Tables'),
               meta: {
                 bkImgUrl: "/adminback.jpeg",
-                bkColor: 'red'
+                bkColor: '#ad2e3c'
               }
             }
           ],
@@ -107,7 +107,7 @@ export default new Router({
       ],
       meta: {
         bkImgUrl: "/adminback.jpeg",
-        bkColor: 'red'
+        bkColor: '#ad2e3c'
       }
     }
   ]
