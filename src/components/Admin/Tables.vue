@@ -29,10 +29,10 @@
     },
     filters: {
       formatSize(value) {
-        if(value >= 2 && value <= 3) {
+        if(value >= 2 && value <= 4) {
           return `${value} местa`
         }
-        if (value >=4 && value <= 10)
+        if (value >=5 && value <= 10)
           return `${value} мест`
       }
     }
