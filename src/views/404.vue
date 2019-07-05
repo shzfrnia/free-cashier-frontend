@@ -1,5 +1,5 @@
 <template>
-    <h1>KEK</h1>
+    <h1>KEK 404  НОТ ФАУНД</h1>
 </template>
 
 <script>
