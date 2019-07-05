@@ -1,5 +1,8 @@
 <template>
     <div class="containter">
+        <div class="date">
+            <input v-model="reservationDate" type="date" id="date" class="textfield"/>
+        </div>
         <div id="legend" class="row">
             <div class="table-id item">
                 №
@@ -14,15 +17,15 @@
                 X
             </div>
         </div>
-        <div :key="i" v-for="i in foo" class="row">
+        <div :key="r.id" v-for="r in getReservations()" class="row">
             <div class="table-id item">
-                {{i*2}}
+                {{r.id}}
             </div>
             <div class="client-name item">
-                {{i*3}}
+                {{r.name}}
             </div>
             <div class="time item">
-                {{i*4}}
+                {{r.time | prettyDate}}
             </div>
             <div class="delete-field item">
                 <button class="delete-btn"><i class="fas fa-trash" aria-hidden="true"></i></button>
@@ -32,14 +35,37 @@
 </template>
 
 <script>
+    import moment from 'moment'
+
   export default {
     name: "Reservations",
     data() {
       return {
-        foo: [
-          1,2,3,4,5,6,7,1,1,1,1,1,1,1,1,1,1,1,1,1,1
-        ]
+        reservationDate: '',
+        ReservationFetchInterval: null
       }
+    },
+    methods: {
+      getReservations() {
+        window.console.log(this.$store.state.reservations)
+        return this.$store.state.reservations
+      }
+    },
+    computed: {
+      toUnix() {
+        return moment(this.reservationDate).unix();
+      }
+    },
+    filters: {
+      prettyDate(value) {
+        const t = parseInt(value)
+        return moment(t).format('DD/MM/YYYY')
+      }
+    },
+    async created() {
+      this.reservationDate = moment().format('YYYY-MM-DD')
+      await this.$store.dispatch('fetchReservations', this.toUnix)
+      this.ReservationFetchInterval = window.setInterval(() => this.$store.dispatch('fetchReservations', this.toUnix), 5000)
     }
   }
 </script>
@@ -89,7 +115,7 @@
     }
 
     .time {
-        min-width: 70px;
+        min-width: 100px;
     }
 
     .delete-field {
@@ -106,6 +132,17 @@
 
     .delete-btn:active {
         background: red;
+    }
+
+    #date{
+        border-radius: 5px;
+        height: 25px;
+        outline: none;
+        font-size:20px;
+    }
+    .date{
+        height: 50px;
+        font-size: 30px;
     }
 
 </style>
