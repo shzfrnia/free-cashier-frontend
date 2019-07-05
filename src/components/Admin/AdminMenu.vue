@@ -1,17 +1,17 @@
 <template>
     <div class="main">
         <div class="nav">
-            <div
-                    :key="i"
+            <router-link
+                    v-for="(r, index) in tabs"
                     class="nav-item"
-                    v-for="i in tabs"
-                    @click="selectedTab = i.componentName"
-                    :class="{ selected: i.componentName === selectedTab }"
-            >{{i.displayName}}</div>
-            <div id="logout-btn" class="nav-item" @click="$store.dispatch('logOut')">LogOut</div>
+                    :key="index"
+                    :to="r.path">
+                {{r.displayName}}
+            </router-link>
+            <div id="logout-btn" class="nav-item" @click="logOut">LogOut</div>
         </div>
         <div class="content">
-            <component :is="selectedTab"></component>
+            <router-view></router-view>
         </div>
     </div>
 </template>
@@ -33,15 +33,18 @@
         tabs: [
           {
             displayName: 'Бронирование стола',
-            componentName: 'reservation-form-admin'
+            componentName: 'reservation-form-admin',
+            path: '/admin/'
           },
           {
             displayName: 'Бронирования',
-            componentName: 'reservations'
+            componentName: 'reservations',
+            path: '/admin/reservations'
           },
           {
             displayName: "Столы",
-            componentName: 'tables'
+            componentName: 'tables',
+            path: '/admin/tables'
           }
         ],
         selectedTab: 'reservation-form-admin'
