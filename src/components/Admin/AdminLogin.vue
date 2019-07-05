@@ -43,6 +43,7 @@
       async logInUser() {
         try {
             await this.$store.dispatch('logIn', this.creds)
+            this.$router.push('/admin')
         } catch (e) {
           this.hasError = true
           this.errorMessage = e
