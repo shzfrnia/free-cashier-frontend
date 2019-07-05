@@ -121,7 +121,7 @@ export default {
        height: 30px;
        outline: none;
        font-size:20px;
-       width: 215px;
+       width: 180px;
        text-align: left;
     }
     .date {
