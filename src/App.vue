@@ -16,9 +16,6 @@
 
   export default {
     name: "app",
-    beforeCreate() {
-      this.$router.push({name: 'tables'})
-    },
     components: {
       NavBar,
       WhiteBox
