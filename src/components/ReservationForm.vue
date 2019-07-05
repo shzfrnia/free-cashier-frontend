@@ -11,6 +11,8 @@
 
 <script>
     import {TablesApi} from '../api/server/index' //'api-client'
+    import moment from 'moment'
+
 
   export default {
     name: "ReservationForm",
@@ -33,6 +35,15 @@
     },
     methods: {
       submitForm() {
+        const stringDate = this.reservationDate + '-' + this.time;
+        alert(stringDate);
+
+          // const moment = require('moment');
+          // moment.locale("ru");
+          // const date = moment(stringDate, 'DD-MMMM-YYYY-hh:mm').unix();
+          //
+          // console.log(date);
+
         let param = {
             id: this.reservationId,
             name: this.name,
