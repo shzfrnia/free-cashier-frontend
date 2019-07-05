@@ -1,5 +1,6 @@
 import {FakeTables} from "./data";
 import {FakeUser} from "./data";
+import {FakeReservation} from "./data";
 import moment from "moment";
 
 //проверка на то какой день
@@ -20,6 +21,18 @@ export class TablesApi {
         return result
         
        }
+  }
+}
+
+export class ReservationAPi {
+  static async getReservations(unixTime) {
+    if (moment.unix(unixTime).format("MM/DD/YYYY") === moment().format("MM/DD/YYYY")) {
+      return FakeReservation['0']
+
+    } else {
+      return FakeReservation['1']
+
+    }
   }
 }
 
