@@ -49,7 +49,7 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         height: 100vh;
-        transition: 0.7s;
+        transition: 0.6s;
         background-size: cover;
     }
 

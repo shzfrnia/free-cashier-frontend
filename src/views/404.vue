@@ -1,5 +1,7 @@
 <template>
-    <h1>KEK 404  НОТ ФАУНД</h1>
+    <div>
+        <h1>KEK 404  НОТ ФАУНД</h1>
+    </div>
 </template>
 
 <script>
