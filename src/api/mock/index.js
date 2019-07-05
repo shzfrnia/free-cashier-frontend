@@ -34,6 +34,12 @@ export class ReservationAPi {
 
     }
   }
+
+  static async deleteReservation(id) {
+    window.console.log(FakeReservation['0'])
+    FakeReservation['0'] = FakeReservation['0'].filter(i => i.id !== id)
+    window.console.log(FakeReservation['0'])
+  }
 }
 
 export class AuthAPI {

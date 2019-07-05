@@ -24,18 +24,18 @@
                 <i class="fas fa-trash" aria-hidden="true"></i>
             </div>
         </div>
-        <div :key="r.id" v-for="r in getReservations()" class="row" @click="openEditTimeForm(r)">
-            <div class="table-id item">
+        <div :key="r.id" v-for="r in getReservations()" class="row">
+            <div @click="openEditTimeForm(r)" class="table-id item">
                 {{r.id}}
             </div>
-            <div class="client-name item">
+            <div @click="openEditTimeForm(r)" class="client-name item">
                 {{r.name}}
             </div>
-            <div class="time item">
+            <div @click="openEditTimeForm(r)" class="time item">
                 {{r.time | prettyDate}}
             </div>
             <div class="delete-field item">
-                <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                <button @click="deleteReservation(r.id)" class="delete-btn"><i class="fas fa-trash"></i></button>
             </div>
         </div>
     </div>
@@ -61,13 +61,17 @@
       getReservations() {
         return this.$store.state.reservations
       },
-        openEditTimeForm(r) {
-            this.reservationTableId = r.id,
-            this.reservationTime = r.time,
-            this.reservationName = r.name,
-            this.reservationPhone = r.phone,
-            this.showEditTime = true
-        }
+      openEditTimeForm(r) {
+        this.reservationTableId = r.id,
+        this.reservationTime = r.time,
+        this.reservationName = r.name,
+        this.reservationPhone = r.phone,
+        this.showEditTime = true
+      },
+      async deleteReservation(id) {
+        await this.$store.dispatch('deleteReservation', id)
+        await this.$store.dispatch('fetchReservations', this.toUnix)
+      }
     },
     computed: {
       toUnix() {
