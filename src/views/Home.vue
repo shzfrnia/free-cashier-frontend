@@ -9,7 +9,7 @@
             <div class="booking-map">
                 <div class="booking-text">Выберите место</div>
                 <div class="date">Выберите дату брони 
-                    <input v-model="reservationDate" type="date" id="date"/>
+                    <input v-model="reservationDate" type="date" id="date" class="textfield"/>
                 </div>
                 <div class="legend">
                     <div class="legend-list"><div class="tbl-icon tbl-free"></div>Свободен</div>
@@ -111,11 +111,22 @@ export default {
 
 </script>
 <style scoped>
+    .textfield {
+        display: block;
+        font-size: 25px;
+        width: 320px;
+        border: solid 1px gray;
+        border-radius: 4px;
+        outline: none;
+        padding: 12px;
+        margin: 8px auto;
+    }
     #date{    
        border-radius: 5px;
        height: 25px;
        outline: none;
-       font-size:20px;}
+       font-size:20px;
+    }
     .date{
         margin: auto;
         height: 30px;
