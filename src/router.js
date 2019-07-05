@@ -1,7 +1,25 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from './store'
 
 Vue.use(Router)
+
+const redirectIfAuthenticated = (to, from, next) => {
+  if (!store.getters.isAuthenticated) {
+    next()
+    return
+  }
+  next('/admin/admin-reservation')
+}
+
+const redirectIfNotAuthenticated = (to, from, next) => {
+  if (store.getters.isAuthenticated) {
+    next()
+    return
+  }
+  next('/admin/login')
+}
+
 
 export default new Router({
   mode: 'history',
@@ -11,12 +29,16 @@ export default new Router({
       path: '*', component: () => import('./views/404.vue'),
     },
     {
+      path: '/',
+      beforeEnter: (to, from, next) => next('/tables')
+    },
+    {
       path: '/tables',
       name: 'tables',
       component: () => import('./views/Home.vue'),
       meta: {
         bkColor: "rgb(203, 128, 56)",
-        bkImgUrl: "Table.png"
+        bkImgUrl: "/Table.png"
       }
     },
     {
@@ -25,15 +47,61 @@ export default new Router({
       component: () => import('./views/About.vue'),
       meta: {
         bkColor: "rgb(203, 128, 56)",
-        bkImgUrl: "About.jpg"
+        bkImgUrl: "/About.jpg"
       }
     },
     {
       path: '/admin',
-      name: 'admin',
       component: () => import('./views/AdminPanel.vue'),
+      children: [
+        {
+          path: 'login',
+          component: () => import('./components/Admin/AdminLogin'),
+          meta: {
+            bkImgUrl: "/adminback.jpeg",
+            bkColor: 'red'
+          },
+          beforeEnter: redirectIfAuthenticated
+        },
+        {
+          path: '',
+          component: () => import('./components/Admin/AdminMenu.vue'),
+          meta: {
+            bkImgUrl: "/adminback.jpeg",
+            bkColor: 'red'
+          },
+          children: [
+            {
+              path: '',
+              name: 'admin',
+              component: () => import('./components/Admin/ReservationFormAdmin.vue'),
+              meta: {
+                bkImgUrl: "/adminback.jpeg",
+                bkColor: 'red'
+              }
+            },
+            {
+              path: 'reservations',
+              component: () => import('./components/Admin/Reservations.vue'),
+              meta: {
+                bkImgUrl: "/adminback.jpeg",
+                bkColor: 'red'
+              }
+            },
+            {
+              path: 'tables',
+              component: () => import('./components/Admin/Tables'),
+              meta: {
+                bkImgUrl: "/adminback.jpeg",
+                bkColor: 'red'
+              }
+            }
+          ],
+          beforeEnter: redirectIfNotAuthenticated
+        }
+      ],
       meta: {
-        bkImgUrl: "adminback.jpeg",
+        bkImgUrl: "/adminback.jpeg",
         bkColor: 'red'
       }
     }
