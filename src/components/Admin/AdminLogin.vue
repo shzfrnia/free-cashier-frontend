@@ -4,13 +4,24 @@
             <p class="text-danger" v-if="hasError">{{errorMessage}}</p>
             <label class="form-label">
                 <p>Login</p>
-                <input @input="hasError=false" required v-model="creds.login" class="form-input" type="text" placeholder="login">
+                <input @input="hasError=false"
+                       required
+                       v-model="creds.login"
+                       class="form-input"
+                       type="text"
+                       placeholder="login">
             </label>
             <label class="form-label">
                 <p>Password</p>
-                <input @input="hasError=false" required v-model="creds.password" class="form-input" type="password" placeholder="password">
+                <input @input="hasError=false"
+                       required
+                       v-model="creds.password"
+                       class="form-input"
+                       type="password"
+                       @keydown.enter="logInUser()"
+                       placeholder="password">
             </label>
-            <input @click="logInUser()" class="btn" type="button" value="ВПУСТИТЕ МЕНЯ">
+            <button @click="logInUser()" class="btn" type="button" >Войти</button>
         </div>
     </div>
 </template>
@@ -83,6 +94,9 @@
     .btn {
         display: block;
         margin-top: 20px;
+        height: 30px;
+        width: 130px;
+        background: #e69393;
     }
 
     .text-danger {
