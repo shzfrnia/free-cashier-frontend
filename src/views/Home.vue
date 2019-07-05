@@ -9,7 +9,7 @@
             <div class="booking-map">
                 <div class="booking-text">Стол</div>
                 <div class="date">Выберите дату брони 
-                    <input v-model="reservationDate" type="date" id="date" class="textfield"/>
+                    <input v-model="reservationDate" type="date" id="date"/>
                 </div>
                 <div class="legend">
                     <div class="legend-list"><div class="tbl-icon tbl-free"></div>Свободен</div>
@@ -113,21 +113,16 @@ export default {
 
 </script>
 <style scoped>
-    .textfield {
-        display: block;
-        font-size: 25px;
-        width: 176px;
-        border: solid 1px gray;
-        border-radius: 4px;
-        outline: none;
-        padding: 12px;
-        margin: 8px auto;
-    }
-    #date{    
+     #date{   
+       display: block;
+       border: solid 1px gray;
+       margin: 8px auto; 
        border-radius: 5px;
-       height: 25px;
+       height: 30px;
        outline: none;
        font-size:20px;
+       width: 215px;
+       text-align: left;
     }
     .date {
         margin: auto;
@@ -138,11 +133,6 @@ export default {
         font-size: 30px;
     }
 
-    .date input {
-        width: 215px;
-        text-align: left;
-    }
-
     .booking-text {
         margin: auto;
         height: 30px;
@@ -150,10 +140,6 @@ export default {
         right: -23%;
         position: absolute;
         font-size: 25px;
-    }
-
-    .booking {
-
     }
 
     .legend {
