@@ -26,8 +26,10 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '*', component: () => import('./views/404.vue'),
+      path: '*',
+      component: () => import('./views/404.vue'),
       meta: {
+        bkColor: 'red',
         bkImgUrl: '/404-background-3.png'
       }
     },
