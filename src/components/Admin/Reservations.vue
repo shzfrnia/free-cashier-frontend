@@ -8,7 +8,7 @@
                     :reservation-phone="reservationPhone"></edit-reservation-form>
         </modal-window>
         <div class="date">
-            <input v-model="reservationDate" type="date" id="date" class="textfield"/>
+            <input v-model="reservationDate" type="date" id="date"/>
         </div>
         <div id="legend" class="row">
             <div class="table-id item">
@@ -155,13 +155,14 @@
 
     #date{
         border-radius: 5px;
-        height: 25px;
+        height: 30px;
         outline: none;
+        border: solid 1px gray;
         font-size:20px;
+        width: 180px;
     }
     .date{
         height: 50px;
         font-size: 30px;
     }
-
 </style>
