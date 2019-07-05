@@ -64,7 +64,6 @@
     methods: {
       submitForm() {
         const stringDate = this.reservationDate + '-' + this.time;
-        alert(stringDate);
         const date = moment(stringDate, 'YYYY-MMMM-DD-hh:mm').unix();
 
         let param = {
@@ -73,6 +72,7 @@
             phone: this.phone,
             date: date
         };
+
         window.console.log(TablesApi.reservationTable(JSON.stringify(param)));
         this.$parent.closeWindowDialog();
       }
