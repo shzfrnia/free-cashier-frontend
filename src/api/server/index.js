@@ -1,6 +1,6 @@
 import {API_POINT} from "./api_point";
 import axios from 'axios'
-import FakeUser from "../mock/data";
+import {FakeUser} from "../mock/data";
 
 const API_ROUTES = {
   tables: `${API_POINT}/tables`
