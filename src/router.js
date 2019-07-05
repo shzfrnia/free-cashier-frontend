@@ -27,6 +27,9 @@ export default new Router({
   routes: [
     {
       path: '*', component: () => import('./views/404.vue'),
+      meta: {
+        bkImgUrl: '/404-background-3.png'
+      }
     },
     {
       path: '/',
