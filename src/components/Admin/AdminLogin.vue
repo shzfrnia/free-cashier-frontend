@@ -89,6 +89,7 @@
         font-size: 20px;
         border-radius: 3px;
         border: 1px solid red;
+        outline: none;
         padding: 4px;
     }
 
@@ -96,6 +97,7 @@
         display: block;
         margin-top: 20px;
         height: 30px;
+        font-size: 15px;
         width: 130px;
         background: #e69393;
     }
