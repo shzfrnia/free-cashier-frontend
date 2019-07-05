@@ -6,9 +6,13 @@
                     class="nav-item"
                     :key="index"
                     :to="r.path">
+                <i :class="['fab', `fa-${r.icon}`]"></i>
                 {{r.displayName}}
             </router-link>
-            <div id="logout-btn" class="nav-item" @click="logOut">LogOut</div>
+            <div id="logout-btn" class="nav-item" @click="logOut">
+                <i class="fas fa-sign-out-alt fa-rotate-180"></i>
+                Logout
+            </div>
         </div>
         <div class="content">
             <router-view></router-view>
@@ -26,17 +30,20 @@
           {
             displayName: 'Бронирование стола',
             componentName: 'reservation-form-admin',
-            path: '/admin/'
+            path: '/admin/',
+            icon: 'gitter'
           },
           {
             displayName: 'Бронирования',
             componentName: 'reservations',
-            path: '/admin/reservations'
+            path: '/admin/reservations',
+            icon: 'stack-exchange'
           },
           {
             displayName: "Столы",
             componentName: 'tables',
-            path: '/admin/tables'
+            path: '/admin/tables',
+            icon: 'osi'
           }
         ],
       }
@@ -66,19 +73,20 @@
     }
 
     .nav {
-        min-width: 270px;
-        background: #c1c1c1;
-        margin: -20px;
+        min-width: 240px;
+        z-index: 1;
+        box-shadow: 0 0 4px black;
+        margin: -20px 0 -20px -20px;
         position: relative;
     }
 
     .nav-item {
         text-align:left;
-        padding: 10px 10px 0 10px;
+        padding: 10px;
         font-size: 20px;
         display: block;
         text-decoration: none;
-        color: black;
+        color: #333131;
     }
 
 
@@ -89,13 +97,13 @@
     .content {
         width: 100%;
         display: flex;
-        margin: -20px;
+        margin: -20px -20px -20px 0;
         background: white;
         position: relative;
     }
 
     .router-link-exact-active {
-        background: #8199a5;
+        background: #daadb4;
     }
 
 </style>
