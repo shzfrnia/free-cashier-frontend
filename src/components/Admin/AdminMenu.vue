@@ -17,17 +17,9 @@
 </template>
 
 <script>
-    import Reservations from './Reservations'
-    import ReservationFormAdmin from './ReservationFormAdmin'
-    import Tables from './Tables'
 
   export default {
     name: "AdminMenu",
-    components: {
-      Reservations,
-      ReservationFormAdmin,
-      Tables
-    },
     data() {
       return {
         tabs: [
