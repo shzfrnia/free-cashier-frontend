@@ -12,7 +12,7 @@ export default new Vuex.Store({
       token: localStorage.getItem('token') || ''
     },
     tables: [],
-    reservations: []
+    reservations: [],
   },
   mutations: {
     setTables(state, tables) {
@@ -31,6 +31,9 @@ export default new Vuex.Store({
     },
     setReservations(state, reservations) {
       state.reservations = reservations
+    },
+    deleteReservation(state, id) {
+      delete state.reservations[id]
     }
   },
   getters: {
@@ -62,6 +65,10 @@ export default new Vuex.Store({
       } catch (e) {
         window.console.log(e)
       }
+    },
+    async deleteReservation({commit}, id) {
+      await ReservationAPi.deleteReservation(id)
+      commit('deleteReservation', id)
     }
     }
 })
