@@ -94,6 +94,10 @@
       this.reservationDate = moment().format('YYYY-MM-DD')
       await this.$store.dispatch('fetchReservations', this.toUnix)
       this.ReservationFetchInterval = window.setInterval(() => this.$store.dispatch('fetchReservations', this.toUnix), 5000)
+    },
+    beforeRouteLeave(to, from, next) {
+      window.clearInterval(this.ReservationFetchInterval)
+      next()
     }
   }
 </script>
