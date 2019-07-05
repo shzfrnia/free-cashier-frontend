@@ -1,17 +1,12 @@
 <template>
     <div class="container">
-        <admin-form></admin-form>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
-    import AdminForm from '../components/AdminForm'
-
   export default {
     name: "AdminPanel",
-    components: {
-      AdminForm
-    }
   }
 </script>
 

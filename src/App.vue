@@ -16,9 +16,6 @@
 
   export default {
     name: "app",
-    beforeCreate() {
-      this.$router.push({name: 'tables'})
-    },
     components: {
       NavBar,
       WhiteBox
@@ -43,6 +40,7 @@
     * {
         margin: 0px;
         padding: 0px;
+        box-sizing: border-box;
     }
 
     #app {
@@ -51,7 +49,7 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         height: 100vh;
-        transition: 0.7s;
+        transition: 0.6s;
         background-size: cover;
     }
 

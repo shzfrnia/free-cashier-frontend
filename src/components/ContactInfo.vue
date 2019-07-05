@@ -12,7 +12,10 @@
         <hr>
         <h1>Контактная информация</h1>
         <div class="text">Наш адрес : Ленина 87
-            <i @click="showMap=true" style="color: red;" class="fas fa-map-marker"></i></div>
+            <div class="map-marker-wrapper">
+                <i @click="showMap=true" style="color: red;" class="fas fa-map-marker map-marker"></i>
+            </div>
+        </div>
         <div class="text">Контактный номер : 506078</div>
         <div class="text">Время работы : с 12:00 до 24:00, ежедневно</div>
     </div>
@@ -58,4 +61,22 @@
        margin-top: 1%;font-size: 30px;
    }
 
+    .map-marker-wrapper {
+        display: inline-block;
+        width: 40px;
+        background: #ecebeb;
+        height: 40px;
+        border-radius: 25px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .map-marker-wrapper:hover {
+        box-shadow: 0 0 3px black;
+    }
+
+
+    .map-marker {
+        line-height: 40px;
+    }
 </style>

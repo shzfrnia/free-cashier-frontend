@@ -1,13 +1,13 @@
 <template>
     <div>
         <modal-window v-if="showReservationForm" @submit="showReservationForm=false">
-            <reservation-form :reservation-date="reservationDate" :reservation-id="reservationTableId"></reservation-form>
+            <reservation-form :reservation-date="reservationDate" :reservation-id="reservationTableId" :reservation-time="reservationTime"></reservation-form>
         </modal-window>
 
         <div class="booking">
 <!--            <h2>Выберите место</h2>-->
             <div class="booking-map">
-                <div class="booking-text">Выберите место</div>
+                <div class="booking-text">Стол</div>
                 <div class="date">Выберите дату брони 
                     <input v-model="reservationDate" type="date" id="date"/>
                 </div>
@@ -21,38 +21,71 @@
 
                 <!--Столики-->
                 <div v-if="getTables().length > 0">
-                    <div @click="openReservationForm(getTables()[0].id)" class = "tbl-figure-m" :class='[getTables()[0].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-1">
-                        <div class = "nmbr-places" style="transform: rotate(-90deg);">4</div>
+                    <div @click="openReservationForm(getTables()[0].id, getTables()[0].reservation)"
+                         class = "tbl-figure-m foo"
+                         :class='[getTables()[0].reservation == null ? "tbl-free" : "tbl-part-occupied"]'
+                         id="map-tbl-1">
+                        <div class = "nmbr-places" style="transform: rotate(-90deg);">{{getTables()[0].size}}</div>
                     </div>
-                    <div @click="openReservationForm(getTables()[1].id)" class = "tbl-figure-m" :class='[getTables()[1].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-2">
-                        <div class = "nmbr-places" style="transform: rotate(-90deg);">4</div>
+                    <div @click="openReservationForm(getTables()[1].id, getTables()[1].reservation)"
+                         class = "tbl-figure-m foo"
+                         :class='[getTables()[1].reservation == null ? "tbl-free" : "tbl-part-occupied"]'
+                         id="map-tbl-2">
+                        <div class = "nmbr-places" style="transform: rotate(-90deg);">{{getTables()[1].size}}</div>
                     </div>
-                    <div @click="openReservationForm(getTables()[2].id)" class = "tbl-figure-m" :class='[getTables()[2].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-3">
-                        <div class = "nmbr-places">4</div>
+                    <div @click="openReservationForm(getTables()[2].id, getTables()[2].reservation)"
+                         class = "tbl-figure-m foo"
+                         :class='[getTables()[2].reservation == null ? "tbl-free" : "tbl-part-occupied"]'
+                         id="map-tbl-3">
+                        <div class = "nmbr-places">{{getTables()[2].size}}</div>
                     </div>
-                    <div @click="openReservationForm(getTables()[3].id)" class = "tbl-figure-s" :class='[getTables()[3].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-4">
-                        <div class = "nmbr-places">2</div>
+                    <div @click="openReservationForm(getTables()[3].id, getTables()[3].reservation)"
+                         class = "tbl-figure-s foo"
+                         :class='[getTables()[3].reservation == null ? "tbl-free" : "tbl-part-occupied"]'
+                         id="map-tbl-4">
+                        <div class = "nmbr-places">{{getTables()[3].size}}</div>
                     </div>
-                    <div @click="openReservationForm(getTables()[4].id)" class = "tbl-figure-m" :class='[getTables()[4].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-5">
-                        <div class = "nmbr-places">4</div>
+                    <div @click="openReservationForm(getTables()[4].id, getTables()[4].reservation)"
+                         class = "tbl-figure-m foo"
+                         :class='[getTables()[4].reservation == null ? "tbl-free" : "tbl-part-occupied"]'
+                         id="map-tbl-5">
+                        <div class = "nmbr-places">{{getTables()[4].size}}</div>
                     </div>
-                    <div @click="openReservationForm(getTables()[5].id)" class = "tbl-figure-m" :class='[getTables()[5].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-6">
-                        <div class = "nmbr-places">4</div>
+                    <div @click="openReservationForm(getTables()[5].id, getTables()[5].reservation)"
+                         class = "tbl-figure-m foo"
+                         :class='[getTables()[5].reservation == null ? "tbl-free" : "tbl-part-occupied"]'
+                         id="map-tbl-6">
+                        <div class = "nmbr-places">{{getTables()[5].size}}</div>
                     </div>
-                    <div @click="openReservationForm(getTables()[6].id)" class = "tbl-figure-s" :class='[getTables()[6].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-7">
-                        <div class = "nmbr-places">2</div>
+                    <div @click="openReservationForm(getTables()[6].id, getTables()[6].reservation)"
+                         class = "tbl-figure-s foo"
+                         :class='[getTables()[6].reservation == null ? "tbl-free" : "tbl-part-occupied"]'
+                         id="map-tbl-7">
+                        <div class = "nmbr-places">{{getTables()[6].size}}</div>
                     </div>
-                    <div @click="openReservationForm(getTables()[7].id)" class = "tbl-figure-l" :class='[getTables()[7].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-8">
-                        <div class = "nmbr-places">6</div>
+                    <div @click="openReservationForm(getTables()[7].id, getTables()[7].reservation)"
+                         class = "tbl-figure-l foo"
+                         :class='[getTables()[7].reservation == null ? "tbl-free" : "tbl-part-occupied"]'
+                         id="map-tbl-8">
+                        <div class = "nmbr-places">{{getTables()[7].size}}</div>
                     </div>
-                    <div @click="openReservationForm(getTables()[8].id)" class = "tbl-figure-l" :class='[getTables()[8].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-9">
-                        <div class = "nmbr-places">6</div>
+                    <div @click="openReservationForm(getTables()[8].id), getTables()[8].reservation"
+                         class = "tbl-figure-l foo"
+                         :class='[getTables()[8].reservation == null ? "tbl-free" : "tbl-part-occupied"]'
+                         id="map-tbl-9">
+                        <div class = "nmbr-places">{{getTables()[8].size}}</div>
                     </div>
-                    <div @click="openReservationForm(getTables()[9].id)" class = "tbl-figure-xl" :class='[getTables()[9].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-10">
-                        <div class = "nmbr-places">8</div>
+                    <div @click="openReservationForm(getTables()[9].id, getTables()[9].reservation)"
+                         class = "tbl-figure-xl foo"
+                         :class='[getTables()[9].reservation == null ? "tbl-free" : "tbl-part-occupied"]'
+                         id="map-tbl-10">
+                        <div class = "nmbr-places">{{getTables()[9].size}}</div>
                     </div>
-                    <div @click="openReservationForm(getTables()[10].id)" class = "tbl-figure-xl" :class='[getTables()[10].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-11">
-                        <div class = "nmbr-places">8</div>
+                    <div @click="openReservationForm(getTables()[10].id, getTables()[10].reservation)"
+                         class = "tbl-figure-xl foo"
+                         :class='[getTables()[10].reservation == null ? "tbl-free" : "tbl-part-occupied"]'
+                         id="map-tbl-11">
+                        <div class = "nmbr-places">{{getTables()[10].size}}</div>
                     </div>
                 </div>
             </div>
@@ -78,7 +111,8 @@ export default {
             tablesFetchInterval: null,
             tables: this.$store.state.tables,
             reservationTableId: null,
-            reservationDate: ''
+            reservationDate: '',
+            reservationTime: ''
         }
     },
     computed:{
@@ -93,8 +127,9 @@ export default {
         getTables() {
             return this.$store.state.tables
         },
-        openReservationForm(id) {
+        openReservationForm(id, time = null) {
           this.reservationTableId = id
+            this.reservationTime = time
           this.showReservationForm = true
         }
     },
@@ -111,30 +146,33 @@ export default {
 
 </script>
 <style scoped>
-    #date{    
+     #date{   
+       display: block;
+       border: solid 1px gray;
+       margin: 8px auto; 
        border-radius: 5px;
-       height: 25px;
+       height: 30px;
        outline: none;
-       font-size:20px;}
-    .date{
+       font-size:20px;
+       width: 200px;
+       text-align: left;
+    }
+    .date {
         margin: auto;
-        height: 30px;
-        top: 2%;
-        right: -55%;
+        top: 3%;
+        right: -25%;
         position: absolute;
         font-size: 30px;
     }
+
+
     .booking-text {
         margin: auto;
         height: 30px;
-        top: 34%;
-        right: -43%;
+        top: 38%;
+        right: -23%;
         position: absolute;
-        font-size: 30px;
-    }
-
-    .booking {
-
+        font-size: 25px;
     }
 
     .legend {
@@ -161,15 +199,15 @@ export default {
     }
 
     .tbl-free {
-        background-color: #86EE75;
+        background-color: #68f768;
     }
 
     .tbl-occupied {
-        background-color: #EE7575;
+        background-color: #fd5e53;
     }
 
     .tbl-part-occupied {
-        background-color: #ffff52;
+        background-color: #ffc261;
     }
 
     .booking-map {
@@ -192,6 +230,14 @@ export default {
         height: 24px;
         font-size: 16pt;
         color: white;
+    }
+
+    .foo {
+        cursor: pointer;
+    }
+
+    .foo:hover {
+        box-shadow: 0 0 5px black;
     }
 
     .tbl-figure-s {

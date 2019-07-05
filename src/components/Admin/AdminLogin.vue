@@ -4,14 +4,24 @@
             <p class="text-danger" v-if="hasError">{{errorMessage}}</p>
             <label class="form-label">
                 <p>Login</p>
-                <input @input="hasError=false" required v-model="creds.login" class="form-input" type="text" placeholder="login">
+                <input @input="hasError=false"
+                       required
+                       v-model="creds.login"
+                       class="form-input"
+                       type="text"
+                       placeholder="login">
             </label>
             <label class="form-label">
                 <p>Password</p>
-                <input @input="hasError=false" required v-model="creds.password" class="form-input" type="password" placeholder="password">
+                <input @input="hasError=false"
+                       required
+                       v-model="creds.password"
+                       class="form-input"
+                       type="password"
+                       @keydown.enter="logInUser()"
+                       placeholder="password">
             </label>
-            <input @click="logInUser()" class="btn" type="button" value="ВПУСТИТЕ МЕНЯ">
-            <input @click="$store.dispatch('logOut')" class="btn" type="button" value="ВыПУСТИТЕ МЕНЯ">
+            <button @click="logInUser()" class="btn" type="button" >Войти</button>
         </div>
     </div>
 </template>
@@ -33,6 +43,7 @@
       async logInUser() {
         try {
             await this.$store.dispatch('logIn', this.creds)
+            this.$router.push('/admin')
         } catch (e) {
           this.hasError = true
           this.errorMessage = e
@@ -78,12 +89,17 @@
         font-size: 20px;
         border-radius: 3px;
         border: 1px solid red;
+        outline: none;
         padding: 4px;
     }
 
     .btn {
         display: block;
         margin-top: 20px;
+        height: 30px;
+        font-size: 15px;
+        width: 130px;
+        background: #e69393;
     }
 
     .text-danger {

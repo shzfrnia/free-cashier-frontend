@@ -1,16 +1,46 @@
 <template>
     <form>
-        <h1>You trying reservation table : {{reservationId}}</h1>
-        <div class="text "> Имя <input type="text" name="Name" class="text" v-model="name"></div><br/>
-        <div class="text ">Контактный номер <input type="tel" name="Phone" class="text" maxlength="11" v-model="phone"></div><br/>
-        <div class="text ">Время брони <input type="time" name="Booking_time" class="text" v-model="time"></div><br/>
-        <div class="text red">Стол свободен до @TIME-30мин</div><br/>
+        <h1>Бронирование столика №: {{reservationId}}</h1>
+<!--        <div class="text "> Имя <input type="text" name="Name" class="text" v-model="name"></div><br/>-->
+<!--        <div class="text ">Контактный номер <input type="tel" name="Phone" class="text" maxlength="11" v-model="phone"></div><br/>-->
+<!--        <div class="text ">Время брони <input type="time" name="Booking_time" class="text" v-model="time"></div><br/>-->
+        <input placeholder="Имя" type="text" name="Name" id="name" class="textfield" maxlength="30" v-model="name">
+        <input placeholder="Телефон" type="tel" name="Phone" class="textfield" maxlength="11" v-model="phone">
+        <div class="text ">Время брони
+            <select name="Booking_time" class="textfield textfield-time" v-model="time">
+                <option value="12:00">12:00</option>
+                <option value="12:30">12:30</option>
+                <option value="13:00">13:00</option>
+                <option value="13:30">13:30</option>
+                <option value="14:00">14:00</option>
+                <option value="14:30">14:30</option>
+                <option value="15:00">15:00</option>
+                <option value="15:30">15:30</option>
+                <option value="16:00">16:00</option>
+                <option value="16:30">16:30</option>
+                <option value="17:00">17:00</option>
+                <option value="17:30">17:30</option>
+                <option value="18:00">18:00</option>
+                <option value="18:30">18:30</option>
+                <option value="19:00">19:00</option>
+                <option value="19:30">19:30</option>
+                <option value="20:00">20:00</option>
+                <option value="20:30">20:30</option>
+                <option value="21:00">21:00</option>
+                <option value="21:30">21:30</option>
+                <option value="22:00">22:00</option>
+                <option value="22:30">22:30</option>
+            </select>
+        </div>
+        <div class="text red">Стол свободен до {{getDate()}}</div><br/>
         <input @click="submitForm" type="button" value="Забронировать" name="submit" id="submit" class="text">
     </form>
 </template>
 
 <script>
     import {TablesApi} from '../api/server/index' //'api-client'
+    import moment from 'moment'
+
 
   export default {
     name: "ReservationForm",
@@ -22,6 +52,10 @@
       reservationDate: {
           type: String,
           required: true
+      },
+      reservationTime: {
+          type: Number,
+          default: null
       }
     },
     data(){
@@ -32,15 +66,20 @@
         }
     },
     methods: {
+      getDate() {
+          return moment.unix(this.reservationTime).format('HH:mm')
+      },
       submitForm() {
+        const stringDate = this.reservationDate + '-' + this.time;
+        const date = moment(stringDate, 'YYYY-MMMM-DD-HH:mm').unix();
+
         let param = {
             id: this.reservationId,
             name: this.name,
             phone: this.phone,
-            date: this.reservationDate,
-            time: this.time
+            date: date
         };
-        //alert(JSON.stringify(param));
+
         window.console.log(TablesApi.reservationTable(JSON.stringify(param)));
         this.$parent.closeWindowDialog();
       }
@@ -54,23 +93,80 @@
 </script>
 
 <style scoped>
+    .title {
+        margin-bottom: 2%;
+    }
+
+    #close-btn {
+        position: absolute;
+        margin: 8px;
+        top: 0;
+        right: 0;
+        font-size: 14pt;
+        background: transparent;
+        border: none;
+    }
+
+    #close-btn:focus, #close-btn:active {outline:none;}
+
     #submit {
         background-color: #CC8602;
         border: none;
         color: white;
         width: 240px;
-        border-radius: 10px;
-        height: 60px;
+        border-radius: 8px;
+        height: 56px;
         outline: none;
     }
 
+    .textfield {
+        display: block;
+        font-size: 25px;
+        width: 320px;
+        border: solid 1px gray;
+        border-radius: 4px;
+        outline: none;
+        padding: 12px;
+        margin: 8px auto;
+    }
+
+    .textfield-time {
+        display: inline-block;
+        width: 140px;
+        margin-left: 48px;
+    }
+
+    .textfield:focus {
+        border: 2px solid black;
+        padding: 11px;
+    }
+
     .text {
-        margin-top: 1%;font-size: 30px;
+        font-size: 25px;
     }
 
     .red {
         color: red;
+        margin: 8px auto;
     }
+
+    /*#submit {*/
+    /*    background-color: #CC8602;*/
+    /*    border: none;*/
+    /*    color: white;*/
+    /*    width: 240px;*/
+    /*    border-radius: 10px;*/
+    /*    height: 60px;*/
+    /*    outline: none;*/
+    /*}*/
+
+    /*.text {*/
+    /*    margin-top: 1%;font-size: 30px;*/
+    /*}*/
+
+    /*.red {*/
+    /*    color: red;*/
+    /*}*/
 
     .head{font-weight: bold;}
 
