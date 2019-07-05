@@ -1,16 +1,37 @@
 <template>
     <div class="container">
-        <admin-form></admin-form>
+        <component :is="currentTab"></component>
     </div>
 </template>
 
 <script>
-    import AdminForm from '../components/AdminForm'
+    import AdminLogin from '../components/Admin/AdminLogin'
+    import AdminMenu from '../components/Admin/AdminMenu'
 
   export default {
     name: "AdminPanel",
     components: {
-      AdminForm
+      AdminLogin,
+      AdminMenu
+    },
+    data() {
+      return {
+        tabs: [
+          {
+            componentName: 'admin-login',
+            displayName: 'admin login'
+          },
+          {
+            componentName: 'admin-menu',
+            displayName: 'Admin Menu'
+          }
+        ]
+      }
+    },
+    computed: {
+      currentTab() {
+        return this.$store.getters.isAuthenticated ? this.tabs[1].componentName : this.tabs[0].componentName
+      }
     }
   }
 </script>
