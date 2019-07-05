@@ -19,12 +19,14 @@
 <script>
     import Reservations from './Reservations'
     import ReservationFormAdmin from './ReservationFormAdmin'
+    import Tables from './Tables'
 
   export default {
     name: "AdminMenu",
     components: {
       Reservations,
-      ReservationFormAdmin
+      ReservationFormAdmin,
+      Tables
     },
     data() {
       return {
@@ -36,6 +38,10 @@
           {
             displayName: 'Бронирования',
             componentName: 'reservations'
+          },
+          {
+            displayName: "Столы",
+            componentName: 'tables'
           }
         ],
         selectedTab: 'reservation-form-admin'
