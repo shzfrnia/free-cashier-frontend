@@ -1,6 +1,6 @@
 <template>
     <form>
-        <h1>Бронирование столика: {{reservationId}}</h1>
+        <h1>Бронирование столика №: {{reservationId}}</h1>
 <!--        <div class="text "> Имя <input type="text" name="Name" class="text" v-model="name"></div><br/>-->
 <!--        <div class="text ">Контактный номер <input type="tel" name="Phone" class="text" maxlength="11" v-model="phone"></div><br/>-->
 <!--        <div class="text ">Время брони <input type="time" name="Booking_time" class="text" v-model="time"></div><br/>-->
@@ -32,7 +32,7 @@
                 <option value="22:30">22:30</option>
             </select>
         </div>
-        <div class="text red">Стол свободен до @TIME-30мин</div><br/>
+        <div class="text red">Стол свободен до {{getDate()}}</div><br/>
         <input @click="submitForm" type="button" value="Забронировать" name="submit" id="submit" class="text">
     </form>
 </template>
@@ -52,6 +52,10 @@
       reservationDate: {
           type: String,
           required: true
+      },
+      reservationTime: {
+          type: Number,
+          default: null
       }
     },
     data(){
@@ -62,9 +66,12 @@
         }
     },
     methods: {
+      getDate() {
+          return moment.unix(this.reservationTime).format('HH:mm')
+      },
       submitForm() {
         const stringDate = this.reservationDate + '-' + this.time;
-        const date = moment(stringDate, 'YYYY-MMMM-DD-hh:mm').unix();
+        const date = moment(stringDate, 'YYYY-MMMM-DD-HH:mm').unix();
 
         let param = {
             id: this.reservationId,

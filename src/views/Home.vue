@@ -1,7 +1,7 @@
 <template>
     <div>
         <modal-window v-if="showReservationForm" @submit="showReservationForm=false">
-            <reservation-form :reservation-date="reservationDate" :reservation-id="reservationTableId"></reservation-form>
+            <reservation-form :reservation-date="reservationDate" :reservation-id="reservationTableId" :reservation-time="reservationTime"></reservation-form>
         </modal-window>
 
         <div class="booking">
@@ -21,10 +21,10 @@
 
                 <!--Столики-->
                 <div v-if="getTables().length > 0">
-                    <div @click="openReservationForm(getTables()[0].id)" class = "tbl-figure-m" :class='[getTables()[0].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-1">
+                    <div @click="openReservationForm(getTables()[0].id, getTables()[0].reservation)" class = "tbl-figure-m" :class='[getTables()[0].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-1">
                         <div class = "nmbr-places" style="transform: rotate(-90deg);">{{getTables()[0].size}}</div>
                     </div>
-                    <div @click="openReservationForm(getTables()[1].id)" class = "tbl-figure-m" :class='[getTables()[1].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-2">
+                    <div @click="openReservationForm(getTables()[1].id, getTables()[1].reservation)" class = "tbl-figure-m" :class='[getTables()[1].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-2">
                         <div class = "nmbr-places" style="transform: rotate(-90deg);">{{getTables()[1].size}}</div>
                     </div>
                     <div @click="openReservationForm(getTables()[2].id)" class = "tbl-figure-m" :class='[getTables()[2].reservation == null ? "tbl-free" : "tbl-part-occupied"]' id = "map-tbl-3">
@@ -78,7 +78,8 @@ export default {
             tablesFetchInterval: null,
             tables: this.$store.state.tables,
             reservationTableId: null,
-            reservationDate: ''
+            reservationDate: '',
+            reservationTime: ''
         }
     },
     computed:{
@@ -93,8 +94,9 @@ export default {
         getTables() {
             return this.$store.state.tables
         },
-        openReservationForm(id) {
+        openReservationForm(id, time = null) {
           this.reservationTableId = id
+            this.reservationTime = time
           this.showReservationForm = true
         }
     },

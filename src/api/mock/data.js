@@ -8,12 +8,12 @@ export const FakeTables = {
         {
             id: 0,
             size: 4,
-            reservation: 1
+            reservation: 1562322655
         },
         {
             id: 1,
             size: 4,
-            reservation: 1
+            reservation: 1562322655
         },
         {
             id: 2,
