@@ -14,7 +14,7 @@
                 Время
             </div>
             <div class="delete-field item">
-                X
+                <i class="fas fa-trash" aria-hidden="true"></i>
             </div>
         </div>
         <div :key="r.id" v-for="r in getReservations()" class="row">
@@ -126,6 +126,7 @@
         outline: none;
         border-radius: 10px;
         height: 70%;
+        font-size: 20px;
         width: 70%;
         transition: .11s;
     }
