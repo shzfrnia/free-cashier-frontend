@@ -1,10 +1,17 @@
 <template>
-    <h1>NE KISNI NA RADUGE ZAVISTNI</h1>
+    <div>
+        <reservation-form></reservation-form>
+    </div>
 </template>
 
 <script>
+    import ReservationForm from '../ReservationForm'
+
   export default {
-    name: "Reservation"
+    name: "Reservation",
+    components: {
+      ReservationForm
+    }
   }
 </script>
 
