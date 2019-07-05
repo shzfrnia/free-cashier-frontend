@@ -1,7 +1,14 @@
 <template>
     <div class="containter">
+        <modal-window v-if="showEditTime" @submit="showEditTime=false">
+            <edit-reservation-form
+                    :reservation-name="reservationName"
+                    :reservation-id="reservationTableId"
+                    :reservation-time="reservationTime"
+                    :reservation-phone="reservationPhone"></edit-reservation-form>
+        </modal-window>
         <div class="date">
-            <input v-model="reservationDate" type="date" id="date" class="textfield"/>
+            <input v-model="reservationDate" type="date" id="date"/>
         </div>
         <div id="legend" class="row">
             <div class="table-id item">
@@ -17,7 +24,7 @@
                 <i class="fas fa-trash" aria-hidden="true"></i>
             </div>
         </div>
-        <div :key="r.id" v-for="r in getReservations()" class="row">
+        <div :key="r.id" v-for="r in getReservations()" class="row" @click="openEditTimeForm(r)">
             <div class="table-id item">
                 {{r.id}}
             </div>
@@ -36,19 +43,31 @@
 
 <script>
     import moment from 'moment'
+    import EditReservationForm from './EditReservationForm'
+    import ModalWindow from '../ModalWindow'
 
   export default {
     name: "Reservations",
+      components: {EditReservationForm, ModalWindow},
+      component: { EditReservationForm, ModalWindow},
     data() {
       return {
         reservationDate: '',
-        ReservationFetchInterval: null
+        ReservationFetchInterval: null,
+          showEditTime: false
       }
     },
     methods: {
       getReservations() {
         return this.$store.state.reservations
-      }
+      },
+        openEditTimeForm(r) {
+            this.reservationTableId = r.id,
+            this.reservationTime = r.time,
+            this.reservationName = r.name,
+            this.reservationPhone = r.phone,
+            this.showEditTime = true
+        }
     },
     computed: {
       toUnix() {
@@ -136,13 +155,14 @@
 
     #date{
         border-radius: 5px;
-        height: 25px;
+        height: 30px;
         outline: none;
+        border: solid 1px gray;
         font-size:20px;
+        width: 180px;
     }
     .date{
         height: 50px;
         font-size: 30px;
     }
-
 </style>
