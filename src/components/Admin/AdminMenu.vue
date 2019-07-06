@@ -63,7 +63,7 @@
         bottom: 0;
         width: 100%;
         padding-bottom: 10px;
-        cursor: default;
+        cursor: pointer;
     }
 
 
@@ -96,6 +96,7 @@
     }
     
     .content {
+        padding: 10px;
         width: 100%;
         display: flex;
         margin: -20px -20px -20px 0;

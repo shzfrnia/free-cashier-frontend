@@ -1,6 +1,6 @@
 <template>
     <div>
-        <reservation-form></reservation-form>
+        <reservation-form :show-select-table="true"></reservation-form>
     </div>
 </template>
 
