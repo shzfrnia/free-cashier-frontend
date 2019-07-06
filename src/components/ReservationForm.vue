@@ -32,7 +32,7 @@
                 <option value="22:30">22:30</option>
             </select>
         </div>
-        <div class="text red">Стол свободен до {{getDate()}}</div><br/>
+        <div class="text red">{{getDate()}}</div><br/>
         <input @click="submitForm" type="button" value="Забронировать" name="submit" id="submit" class="text">
     </form>
 </template>
@@ -67,7 +67,12 @@
     },
     methods: {
       getDate() {
-          return moment.unix(this.reservationTime).format('HH:mm')
+          if (this.reservationTime == null)
+          {
+              return ""
+          }
+          else
+          return (" Стол свободен до " + moment.unix(this.reservationTime).format('HH:mm'))
       },
       submitForm() {
         const stringDate = this.reservationDate + '-' + this.time;

@@ -18,6 +18,9 @@
             <div class="client-name item">
                 Имя клиента
             </div>
+            <div class="phone item">
+                Телефон
+            </div>
             <div class="time item">
                 Время
             </div>
@@ -31,6 +34,9 @@
             </div>
             <div @click="openEditTimeForm(r)" class="client-name item">
                 {{r.name}}
+            </div>
+             <div @click="openEditTimeForm(r)" class="phone item">
+                {{r.phone}}
             </div>
             <div @click="openEditTimeForm(r)" class="time item">
                 {{r.time | prettyDate}}
@@ -86,8 +92,7 @@
     },
     filters: {
       prettyDate(value) {
-        const t = parseInt(value)
-        return moment(t).format('DD/MM/YYYY')
+        return moment.unix(value).format('HH:mm')
       }
     },
     async created() {
@@ -142,6 +147,10 @@
 
     .client-name {
         flex-grow: 1;
+    }
+
+    .phone{
+        min-width: 100px;
     }
 
     .time {
