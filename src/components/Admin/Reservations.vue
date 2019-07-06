@@ -86,8 +86,7 @@
     },
     filters: {
       prettyDate(value) {
-        const t = parseInt(value)
-        return moment(t).format('DD/MM/YYYY')
+        return moment.unix(value).format('HH:mm')
       }
     },
     async created() {
