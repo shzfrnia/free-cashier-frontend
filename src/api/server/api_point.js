@@ -1,1 +1,1 @@
-export const API_POINT = '/api'
+export const API_POINT = 'http://192.168.64.27:8080'

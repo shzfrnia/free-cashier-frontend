@@ -79,10 +79,10 @@
         const date = moment(stringDate, 'YYYY-MMMM-DD-HH:mm').unix();
 
         let param = {
-            id: this.reservationId,
+            idTable: this.reservationId,
             name: this.name,
             phone: this.phone,
-            date: date
+            time: date
         };
 
         window.console.log(TablesApi.reservationTable(JSON.stringify(param)));

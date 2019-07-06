@@ -3,7 +3,8 @@ import axios from 'axios'
 import {FakeUser} from "../mock/data";
 
 const API_ROUTES = {
-  tables: `${API_POINT}/tables`
+  tables: `${API_POINT}/tables`,
+  order: `${API_POINT}/order`
 }
 
 
@@ -19,7 +20,11 @@ export class TablesApi {
 
   static async reservationTable(param) {
     try {
-        axios.post(API_ROUTES.tables, param).then((res) => {
+        axios.post(API_ROUTES.order, param,
+            { headers: {
+              'Content-Type': 'application/json'
+              }
+            }).then((res) => {
       return res
       })
     }
