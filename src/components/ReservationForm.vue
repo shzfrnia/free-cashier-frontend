@@ -1,7 +1,7 @@
 <template>
     <form>
         <h1>Бронирование столика №:{{reservationId}}
-            <select name="Booking_id" class="textfield textfield-time">
+            <select v-if="showSelectTable" name="Booking_id" class="textfield textfield-time">
                 <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -70,6 +70,10 @@
       reservationTime: {
           type: Number,
           default: null
+      },
+      showSelectTable: {
+            type: Boolean,
+            default: false
       }
     },
     data(){
