@@ -1,7 +1,7 @@
 <template>
     <form>
         <h1>Бронирование столика №:{{reservationId}}
-            <select v-if="showSelectTable" name="Booking_id" class="textfield textfield-time">
+            <select v-if="showSelectTable" name="Booking_id" class="b1 textfield textfield-time">
                 <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -116,6 +116,11 @@
 </script>
 
 <style scoped>
+    .b1{
+        margin:3px;
+        display: inline-block;
+        width: 70px !important;
+    }
     .title {
         margin-bottom: 2%;
     }
@@ -156,7 +161,7 @@
     .textfield-time {
         display: inline-block;
         width: 140px;
-        margin-left: 48px;
+        /* margin-left: 48px; */
     }
 
     .textfield:focus {
