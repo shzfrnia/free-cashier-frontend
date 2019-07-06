@@ -1,6 +1,20 @@
 <template>
     <form>
-        <h1>Бронирование столика №: {{reservationId}}</h1>
+        <h1>Бронирование столика №:{{reservationId}}
+            <select name="Booking_id" class="textfield textfield-time">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </h1>
 <!--        <div class="text "> Имя <input type="text" name="Name" class="text" v-model="name"></div><br/>-->
 <!--        <div class="text ">Контактный номер <input type="tel" name="Phone" class="text" maxlength="11" v-model="phone"></div><br/>-->
 <!--        <div class="text ">Время брони <input type="time" name="Booking_time" class="text" v-model="time"></div><br/>-->
