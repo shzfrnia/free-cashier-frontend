@@ -7,6 +7,7 @@
                     :reservation-time="reservationTime"
                     :reservation-phone="reservationPhone"></edit-reservation-form>
         </modal-window>
+
         <div class="date">
             <input v-model="reservationDate" type="date" id="date"/>
         </div>
@@ -17,6 +18,9 @@
             <div class="client-name item">
                 Имя клиента
             </div>
+            <div class="phone item">
+                Телефон
+            </div>
             <div class="time item">
                 Время
             </div>
@@ -24,18 +28,21 @@
                 <i class="fas fa-trash" aria-hidden="true"></i>
             </div>
         </div>
-        <div :key="r.id" v-for="r in getReservations()" class="row" @click="openEditTimeForm(r)">
-            <div class="table-id item">
+        <div :key="r.id" v-for="r in getReservations()" class="row">
+            <div @click="openEditTimeForm(r)" class="table-id item">
                 {{r.id}}
             </div>
-            <div class="client-name item">
+            <div @click="openEditTimeForm(r)" class="client-name item">
                 {{r.name}}
             </div>
-            <div class="time item">
+             <div @click="openEditTimeForm(r)" class="phone item">
+                {{r.phone}}
+            </div>
+            <div @click="openEditTimeForm(r)" class="time item">
                 {{r.time | prettyDate}}
             </div>
             <div class="delete-field item">
-                <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                <button @click="deleteReservation(r.id)" class="delete-btn"><i class="fas fa-trash"></i></button>
             </div>
         </div>
     </div>
@@ -57,17 +64,26 @@
           showEditTime: false
       }
     },
+    watch: {
+      reservationDate: async function () {
+        await this.$store.dispatch('fetchReservations', this.toUnix)
+      }
+    },
     methods: {
       getReservations() {
         return this.$store.state.reservations
       },
-        openEditTimeForm(r) {
-            this.reservationTableId = r.id,
-            this.reservationTime = r.time,
-            this.reservationName = r.name,
-            this.reservationPhone = r.phone,
-            this.showEditTime = true
-        }
+      openEditTimeForm(r) {
+        this.reservationTableId = r.id,
+        this.reservationTime = r.time,
+        this.reservationName = r.name,
+        this.reservationPhone = r.phone,
+        this.showEditTime = true
+      },
+      async deleteReservation(id) {
+        await this.$store.dispatch('deleteReservation', id)
+        await this.$store.dispatch('fetchReservations', this.toUnix)
+      }
     },
     computed: {
       toUnix() {
@@ -76,14 +92,17 @@
     },
     filters: {
       prettyDate(value) {
-        const t = parseInt(value)
-        return moment(t).format('DD/MM/YYYY')
+        return moment.unix(value).format('HH:mm')
       }
     },
     async created() {
       this.reservationDate = moment().format('YYYY-MM-DD')
       await this.$store.dispatch('fetchReservations', this.toUnix)
       this.ReservationFetchInterval = window.setInterval(() => this.$store.dispatch('fetchReservations', this.toUnix), 5000)
+    },
+    beforeRouteLeave(to, from, next) {
+      window.clearInterval(this.ReservationFetchInterval)
+      next()
     }
   }
 </script>
@@ -118,7 +137,6 @@
 
     .item {
         display: flex;
-        /*border-right: 1px solid black;*/
         justify-content: center;
         align-items: center;
     }
@@ -129,6 +147,10 @@
 
     .client-name {
         flex-grow: 1;
+    }
+
+    .phone{
+        min-width: 100px;
     }
 
     .time {

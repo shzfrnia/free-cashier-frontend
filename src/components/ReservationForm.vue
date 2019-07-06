@@ -1,6 +1,20 @@
 <template>
     <form>
-        <h1>Бронирование столика №: {{reservationId}}</h1>
+        <h1>Бронирование столика №:{{reservationId}}
+            <select v-if="showSelectTable" name="Booking_id" class="b1 textfield textfield-time">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </h1>
 <!--        <div class="text "> Имя <input type="text" name="Name" class="text" v-model="name"></div><br/>-->
 <!--        <div class="text ">Контактный номер <input type="tel" name="Phone" class="text" maxlength="11" v-model="phone"></div><br/>-->
 <!--        <div class="text ">Время брони <input type="time" name="Booking_time" class="text" v-model="time"></div><br/>-->
@@ -32,7 +46,7 @@
                 <option value="22:30">22:30</option>
             </select>
         </div>
-        <div class="text red">Стол свободен до {{getDate()}}</div><br/>
+        <div class="text red">{{getDate()}}</div><br/>
         <input @click="submitForm" type="button" value="Забронировать" name="submit" id="submit" class="text">
     </form>
 </template>
@@ -56,6 +70,10 @@
       reservationTime: {
           type: Number,
           default: null
+      },
+      showSelectTable: {
+            type: Boolean,
+            default: false
       }
     },
     data(){
@@ -67,17 +85,22 @@
     },
     methods: {
       getDate() {
-          return moment.unix(this.reservationTime).format('HH:mm')
+          if (this.reservationTime == null)
+          {
+              return ""
+          }
+          else
+          return (" Стол свободен до " + moment.unix(this.reservationTime).format('HH:mm'))
       },
       submitForm() {
         const stringDate = this.reservationDate + '-' + this.time;
         const date = moment(stringDate, 'YYYY-MMMM-DD-HH:mm').unix();
 
         let param = {
-            id: this.reservationId,
+            idTable: this.reservationId,
             name: this.name,
             phone: this.phone,
-            date: date
+            time: date
         };
 
         window.console.log(TablesApi.reservationTable(JSON.stringify(param)));
@@ -93,6 +116,11 @@
 </script>
 
 <style scoped>
+    .b1{
+        margin:3px;
+        display: inline-block;
+        width: 70px !important;
+    }
     .title {
         margin-bottom: 2%;
     }
@@ -133,7 +161,7 @@
     .textfield-time {
         display: inline-block;
         width: 140px;
-        margin-left: 48px;
+        /* margin-left: 48px; */
     }
 
     .textfield:focus {
