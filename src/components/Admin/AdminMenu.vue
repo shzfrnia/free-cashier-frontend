@@ -96,6 +96,7 @@
     }
     
     .content {
+        padding: 10px;
         width: 100%;
         display: flex;
         margin: -20px -20px -20px 0;
