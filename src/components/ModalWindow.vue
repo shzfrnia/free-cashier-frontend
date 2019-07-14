@@ -16,7 +16,6 @@
 </template>
 
 <script>
-
   export default {
     name: "ModalWindow",
     props: {
@@ -50,14 +49,12 @@
         this.showModal = true
       },
       closeWindowDialog() {
-        this.$store.state.blockScreen = false
-        this.blockScreen = this.$store.state.blockScreen
+        this.blockScreen = false
         setTimeout(this.emit, 130)
       },
       emit() {
         this.showModal = false
         setTimeout(this.callEmit, 600)
-        // this.$emit('submit')
       },
       callEmit() {
         this.$emit('submit')
